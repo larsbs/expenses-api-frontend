@@ -13,7 +13,7 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'http://localhost:8080/dist/',
+    publicPath: '/dist/',
     filename: 'bundle.js'
   },
   devServer: {
@@ -21,15 +21,15 @@ module.exports = {
     port: '8080'
   },
   module: {
-    preLoaders: [{
-      test: /\.jsx?$/,
-      include: [
-        path.resolve(__dirname, 'app')
-      ],
-      loaders: [
-        'eslint'
-      ]
-    }],
+    //preLoaders: [{
+      //test: /\.jsx?$/,
+      //include: [
+        //path.resolve(__dirname, 'app')
+      //],
+      //loaders: [
+        //'eslint'
+      //]
+    //}],
     loaders: [{
       test: /\.jsx?$/,
       include: [
