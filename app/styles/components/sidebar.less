@@ -6,6 +6,7 @@
 
 
 @import '../colors';
+@import '../variables';
 
 
 :local(.SidebarContainer) {
@@ -14,11 +15,68 @@
 
 :local(.sidebar) {
   width: 230px;
+  background: @dark-blue-gray;
+  border-right: 1px solid #222;
+}
+
+
+:local(.sidebarHeader) {
+  height: @header-height;
   background: @blue-gray;
+  border-bottom: 1px solid #222;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 21px;
+  padding: 0 20px;
+  letter-spacing: -1px;
 
-
-  :local(.sidebarHeader) {
-    background: @dark-blue-gray;
+  > span:first-child {
+    font-weight: normal;
+    background: #fff;
+    color: @blue-gray;
+    border-radius: 8px;
+    padding: 2px 5px 3px 5px;
+    margin-right: 5px;
   }
 
+  > span:last-child {
+    font-weight: bold;
+  }
+}
+
+
+:local(.sidebarNavigation) {
+  margin: 30px;
+}
+
+
+:local(.navList) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+:local(.navItem) {
+  margin-top: 2px;
+  font-size: 13px;
+  text-transform: uppercase;
+
+  > a {
+    width: 100%;
+    display: block;
+    padding: 15px 0;
+    color: darken(@light-blue-gray, 10%);
+
+    &:hover {
+      color: #fff;
+    }
+
+    > i {
+      font-size: 1.5em;
+      margin-right: 5px;
+      position: relative;
+      top: 2px;
+    }
+  }
 }
