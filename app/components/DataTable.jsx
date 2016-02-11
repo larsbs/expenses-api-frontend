@@ -16,6 +16,11 @@ class DataTable extends React.Component {
       name: 'Lorem Ipsum',
       url: 'http://lorem.herokuapp.com',
       address: 'C/ Lorem, 7',
+    }, {
+      id: 2,
+      name: 'Dolor Sit Amet',
+      url: 'http://dolor.herokuapp.com',
+      address: 'C/ Dolor, 7',
     }]
   };
 
@@ -27,8 +32,8 @@ class DataTable extends React.Component {
     return (
       <div className={styles.DataTableContainer + ' DataTable-container'}>
         <div className={styles.shownItemsControls}>
-          <div className={styles.shownItemsSelector}>
-            <select>
+          <div className={styles.shownItemsSelectorContainer}>
+            <select className={styles.shownItemsSelector}>
               <option>10</option>
               <option>30</option>
               <option>50</option>

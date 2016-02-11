@@ -4,25 +4,73 @@
 // Author: Lorenzo Ruiz
 //------------------------
 
+@import '../variables';
+@import '../colors';
+
 
 :local(.DataTableContainer) {
+  composes: containerSheet from '!less!../containers.less';
+  padding: 0;
 }
 
-
 :local(.shownItemsControls) {
+  color: #777;
+  font-size: 0.9em;
+  padding: 25px 20px;
+  display: flex;
+  justify-content: space-between;
+}
 
-  :local(.shownItemsSelector) {
-  }
+:local(.shownItemsSelectorContainer) {
+}
 
-  :local(.shownItemsCount) {
-  }
+:local(.shownItemsSelector) {
+  font-weight: normal;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  border-radius: @border-radius-default;
+  padding: 1px 7px;
+  margin-right: 5px;
+}
 
+:local(.shownItemsCount) {
+  padding-top: 3px;
 }
 
 :local(.dataTable) {
-  border: 1px solid black;
+  width: 100%;
+  border-bottom: 1px solid @light-gray;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
 
-  th, td {
-    border: 1px solid black;
+  > thead > tr > th {
+    text-align: left;
+    padding: 8px;
+    padding-bottom: 15px;
+    vertical-align: bottom;
+    border-bottom: 1px solid @light-gray;
+
+    &:first-child {
+      padding-left: 30px;
+    }
   }
+
+  > tbody > tr > td {
+    height: 60px;
+    vertical-align: middle;
+    color: @darker-gray;
+    padding: 8px;
+    border-top: 1px solid @light-gray;
+
+    &:first-child {
+      padding-left: 30px;
+    }
+  }
+}
+
+:local(.tablePagination) {
+  visibility: hidden;
 }

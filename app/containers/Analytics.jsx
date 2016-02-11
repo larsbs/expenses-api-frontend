@@ -3,6 +3,8 @@ import React from 'react';
 import Header from '../components/Header';
 import LatestActivity from '../components/LatestActivity';
 import Chart from '../components/Chart';
+import DataTable from '../components/DataTable';
+
 import styles from '../styles/containers/analytics.less';
 import headerStyles from '../styles/components/header.less';
 
@@ -96,6 +98,8 @@ const Analytics = () => (
       <button className={headerStyles.button}>Add Life</button>
     </Header>
     <div className={styles.analyticsContent}>
+      <DataTable />
+    { /*
       <div className={styles.analytics}>
         <div className={styles.dateRange}>
           <i className="fa fa-fw fa-calendar" /> Jan 2016 - Feb 2016
@@ -106,6 +110,7 @@ const Analytics = () => (
         </div>
       </div>
       <LatestActivity />
+    */ }
     </div>
   </main>
 );
