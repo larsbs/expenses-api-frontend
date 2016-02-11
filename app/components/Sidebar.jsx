@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router';
+
 import styles from '../styles/components/sidebar.less';
 
 
@@ -10,16 +12,16 @@ const Sidebar = ({ styleId }) => (
     <nav className={styles.sidebarNavigation}>
       <ul className={styles.navList}>
         <li className={styles.navItem}>
-          <a href="javascript:;"><i className="fa fa-fw fa-bar-chart" /> Analytics</a>
+          <Link to="/"><i className="fa fa-fw fa-bar-chart" /> Analytics</Link>
         </li>
         <li className={styles.navItem}>
-          <a href="javascript:;"><i className="fa fa-fw fa-credit-card" /> Expenses</a>
+          <Link to="/expenses"><i className="fa fa-fw fa-credit-card" /> Expenses</Link>
         </li>
         <li className={styles.navItem}>
-          <a href="javascript:;"><i className="fa fa-fw fa-users" /> Users</a>
+          <Link to="/users"><i className="fa fa-fw fa-users" /> Users</Link>
         </li>
         <li className={styles.navItem}>
-          <a href="javascript:;"><i className="fa fa-fw fa-cubes" /> Categories</a>
+          <Link to="/categories"><i className="fa fa-fw fa-cubes" /> Categories</Link>
         </li>
       </ul>
     </nav>
