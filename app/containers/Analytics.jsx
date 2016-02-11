@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Header from '../components/Header';
+import LatestActivity from '../components/LatestActivity';
+import styles from '../styles/containers/analytics.less';
 
 
 const breadcrumbs = [{
@@ -9,9 +11,17 @@ const breadcrumbs = [{
 }];
 
 const Analytics = () => (
-  <Header breadcrumbs={breadcrumbs}>
-    <button>Add Life</button>
-  </Header>
+  <main>
+    <Header breadcrumbs={breadcrumbs}>
+      <button>Add Life</button>
+    </Header>
+    <div className={styles.analyticsContent}>
+      <div className={styles.analytics}>
+        <span className={styles.dateRange}>Jan 2016 - Feb 2016</span>
+      </div>
+      <LatestActivity />
+    </div>
+  </main>
 );
 
 
