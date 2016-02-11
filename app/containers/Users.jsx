@@ -1,8 +1,17 @@
 import React from 'react';
 
+import Header from '../components/Header';
+
+
+const breadcrumbs = [{
+  icon: 'fa fa-fw fa-bar-chart',
+  title: 'Users'
+}];
 
 const Users = () => (
-  <h1>Users</h1>
+  <Header breadcrumbs={breadcrumbs}>
+    <button>Add Life</button>
+  </Header>
 );
 
 

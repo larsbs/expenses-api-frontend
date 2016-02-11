@@ -1,8 +1,17 @@
 import React from 'react';
 
+import Header from '../components/Header';
+
+
+const breadcrumbs = [{
+  icon: 'fa fa-fw fa-credit-card',
+  title: 'Expenses'
+}];
 
 const Expenses = () => (
-  <h1>Expenses</h1>
+  <Header breadcrumbs={breadcrumbs}>
+    <button>Add Expense</button>
+  </Header>
 );
 
 
