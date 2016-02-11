@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import DataTable from '../components/DataTable';
+import Sidebar from '../components/Sidebar';
+import styles from '../styles/containers/application.less';
 
 
-const Application = () => (
-  <div>
-    <h1>Expensation</h1>
-    <DataTable />
+const Application = (props) => (
+  <div className={styles.application}>
+    <Sidebar />
+    {props.children}
   </div>
 );
 

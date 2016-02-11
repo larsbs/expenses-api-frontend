@@ -1,5 +1,15 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { browserHistory } from 'react-router';
+import { syncHistory } from 'react-router-redux';
+
 import reducer from './reducers';
 
 
-export default createStore(reducer);
+const reduxRouterMiddleware = syncHistory(browserHistory);
+
+export default createStore(
+  reducer,
+  applyMiddleware(
+    reduxRouterMiddleware
+  )
+);
