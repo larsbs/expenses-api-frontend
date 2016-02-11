@@ -8,7 +8,9 @@ import styles from '../styles/containers/application.less';
 const Application = (props) => (
   <div className={styles.application}>
     <Sidebar />
-    {props.children}
+    <main>
+      {props.children}
+    </main>
   </div>
 );
 

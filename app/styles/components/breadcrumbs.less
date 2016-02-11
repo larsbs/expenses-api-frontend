@@ -1,0 +1,43 @@
+//------------------------
+// BREADCRUMBS
+//
+// Author: Lorenzo Ruiz
+//------------------------
+
+
+:local(.breadcrumbs) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 21px;
+  background: none;
+  font-weight: 300;
+  letter-spacing: -1px;
+}
+
+:local(.crumb) {
+  position: relative;
+  top: -2px;
+  display: inline-block;
+
+  .fa {
+    font-size: 1.3em;
+    margin-right: 10px;
+    position: relative;
+    top: 2px;
+  }
+
+  &::before {
+    content: "/";
+    padding: 0 10px;
+    color: #ccc;
+  }
+
+  &:first-child {
+    &::before {
+      content: "";
+      padding: 0;
+    }
+  }
+
+}
