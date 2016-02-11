@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import DataTable from '../components/DataTable';
+
 
 const Application = () => (
-  <h1>Expensation</h1>
+  <div>
+    <h1>Expensation</h1>
+    <DataTable />
+  </div>
 );
 
 
