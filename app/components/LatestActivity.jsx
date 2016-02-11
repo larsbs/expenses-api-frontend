@@ -25,17 +25,6 @@ const LatestActivity = () => (
       <div className={styles.cronoBar}></div>
       <div className={styles.activitiesList}>
         <Activity />
-        <Activity />
-        <Activity />
-        <Activity />
-        <Activity />
-        <Activity />
-        <Activity />
-        <Activity />
-        <Activity />
-        <Activity />
-        <Activity />
-        <Activity />
       </div>
     </div>
   </section>

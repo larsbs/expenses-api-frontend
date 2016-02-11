@@ -1,9 +1,13 @@
+const webpack = require('webpack');
 const path = require('path');
 
 
 module.exports = {
   devtools: 'eval-source-map',
   resolve: {
+    root: [
+      path.join(__dirname, 'vendor')
+    ],
     extensions: ['', '.js', '.jsx']
   },
   entry: [
@@ -20,16 +24,22 @@ module.exports = {
     host: 'localhost',
     port: '8080'
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      moment: 'moment',
+      'window.moment': 'moment'
+    })
+  ],
   module: {
-    //preLoaders: [{
-      //test: /\.jsx?$/,
-      //include: [
-        //path.resolve(__dirname, 'app')
-      //],
-      //loaders: [
-        //'eslint'
-      //]
-    //}],
+    preLoaders: [{
+      test: /\.jsx?$/,
+      include: [
+        path.resolve(__dirname, 'app')
+      ],
+      loaders: [
+        'eslint'
+      ]
+    }],
     loaders: [{
       test: /\.jsx?$/,
       include: [

@@ -9,9 +9,11 @@ const breadcrumbs = [{
 }];
 
 const Expenses = () => (
-  <Header breadcrumbs={breadcrumbs}>
-    <button>Add Expense</button>
-  </Header>
+  <main>
+    <Header breadcrumbs={breadcrumbs}>
+      <button>Add Expense</button>
+    </Header>
+  </main>
 );
 
 

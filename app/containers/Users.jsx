@@ -9,9 +9,11 @@ const breadcrumbs = [{
 }];
 
 const Users = () => (
-  <Header breadcrumbs={breadcrumbs}>
-    <button>Add Life</button>
-  </Header>
+  <main>
+    <Header breadcrumbs={breadcrumbs}>
+      <button>Add Life</button>
+    </Header>
+  </main>
 );
 
 
