@@ -5,9 +5,6 @@ const path = require('path');
 module.exports = {
   devtools: 'eval-source-map',
   resolve: {
-    root: [
-      path.join(__dirname, 'vendor')
-    ],
     extensions: ['', '.js', '.jsx']
   },
   entry: [

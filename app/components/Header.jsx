@@ -4,7 +4,7 @@ import Breadcrumbs from './Breadcrumbs';
 import styles from '../styles/components/header.less';
 
 
-const Header = ({ breadcrumbs, children }) => (
+const Header = ({ breadcrumbs }) => (
   <div className={styles.header}>
     <Breadcrumbs breadcrumbs={breadcrumbs} />
   </div>
