@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import LatestActivity from '../components/LatestActivity';
 import Chart from '../components/Chart';
 import styles from '../styles/containers/analytics.less';
+import headerStyles from '../styles/components/header.less';
 
 
 const breadcrumbs = [{
@@ -92,7 +93,7 @@ const expensesByCategory = {
 const Analytics = () => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
-      <button>Add Life</button>
+      <button className={headerStyles.button}>Add Life</button>
     </Header>
     <div className={styles.analyticsContent}>
       <div className={styles.analytics}>

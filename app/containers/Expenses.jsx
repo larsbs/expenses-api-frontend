@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from '../components/Header';
+import headerStyles from '../styles/components/header.less';
 
 
 const breadcrumbs = [{
@@ -11,7 +12,7 @@ const breadcrumbs = [{
 const Expenses = () => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
-      <button>Add Expense</button>
+      <button className={headerStyles.button}>Add Expense</button>
     </Header>
   </main>
 );
