@@ -99,18 +99,23 @@ const Analytics = () => (
       <button className={headerStyles.button}>Add Life</button>
     </Header>
     <div className={styles.analyticsContent}>
-      <div className={styles.analytics}>
-        <div className={styles.dateRange}>
-          <i className="fa fa-fw fa-calendar" /> Jan 2016 - Feb 2016
+      <div className={styles.container}>
+        <div className={styles.analytics}>
+          <div className={styles.dateRange}>
+            <i className="fa fa-fw fa-calendar" /> Jan 2016 - Feb 2016
+          </div>
+          <div className={styles.chartsContainer}>
+            <Chart title="expenses evolution" data={expensesEvolution} />
+            <Chart title="expenses by category" data={expensesByCategory} />
+          </div>
         </div>
-        <div className={styles.chartsContainer}>
-          <Chart title="expenses evolution" data={expensesEvolution} />
-          <Chart title="expenses by category" data={expensesByCategory} />
+        <LatestActivity />
+        <div className={styles.title}>
+          <i className="fa fa-fw fa-credit-card" /> Latest expenses
         </div>
+        <DataFilter />
+        <DataTable />
       </div>
-      <LatestActivity />
-      <DataFilter />
-      <DataTable />
     </div>
   </main>
 );

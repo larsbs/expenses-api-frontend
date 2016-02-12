@@ -10,14 +10,16 @@
 
 :local(.analyticsContent) {
   height: ~'calc(100% - ' @header-height ~')';
-  padding: 40px 15px;
-  padding-bottom: 50px;
   overflow-y: auto;
+}
+
+:local(.container) {
+  padding: 40px 30px;
+  padding-bottom: 50px;
 }
 
 :local(.analytics) {
   width: ~'calc(100% - 400px)';
-  padding: 0 15px;
   display: inline-block;
   vertical-align: top;
 }
@@ -31,4 +33,8 @@
 
 :local(.chartsContainer) {
   padding-right: 30px;
+}
+
+:local(.title) {
+  composes: dateRange;
 }
