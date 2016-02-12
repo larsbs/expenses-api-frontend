@@ -1,5 +1,8 @@
-import { fork, take, call } from 'redux-saga';
+import { fork, take, call, put } from 'redux-saga';
+
+import { fetchUsers } from '../utils/fetch';
 import * as UserActions from '../actions/users';
+import { receiveUsers } from '../actions/users';
 
 
 //function* startUp(getState) {
@@ -10,6 +13,7 @@ import * as UserActions from '../actions/users';
 //}
 
 export default function* root(getState) {
-  yield take(UserActions.ADD_USER);
-  yield call(() => new Promise(resolve => resolve(console.log('Hello'))));
+  yield take(UserActions.LOAD_USERS);
+  const users = yield call(fetchUsers);
+  yield put(receiveUsers(users));
 }

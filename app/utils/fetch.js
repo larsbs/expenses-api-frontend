@@ -6,7 +6,11 @@ export function fetchExpenses() {
 
 export function fetchUsers() {
   const request = new Request(BASE_URL + 'users');
-  return fetch(request);
+  return fetch(request)
+  .then(response => {
+    return response.json();
+  })
+  .then(json => json.users);
 }
 
 export function fetchCategories() {
