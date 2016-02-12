@@ -15,10 +15,15 @@
 }
 
 :local(.header) {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 0;
   padding: 7px 15px;
   display: flex;
   justify-content: space-between;
+}
+
+:local(.opened) {
+  composes: header;
+  border-bottom: 1px solid #ddd;
 }
 
 :local(.title) {
@@ -47,7 +52,9 @@
 }
 
 :local(.body) {
+  overflow: hidden;
   padding: 15px 20px;
+  display: none;
 }
 
 :local(.filters) {

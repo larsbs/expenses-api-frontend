@@ -4,7 +4,7 @@
   "description": "Application to manage expenses.",
   "main": "index.js",
   "scripts": {
-    "webpack-server": "webpack-dev-server --inline --hot --progress --colors",
+    "webpack-server": "webpack-dev-server --inline --hot --progress --colors --content-base public/",
     "webpack-test-server": "webpack-dev-server --inline --hot --progress --colors --config webpack.test.config.js",
     "lint": "eslint main.js app/ test/",
     "test": "npm run webpack-test-server",
@@ -39,6 +39,8 @@
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
+    "velocity-animate": "^1.2.3",
+    "velocity.js": "^0.3.4",
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1"
   },

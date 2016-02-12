@@ -1,4 +1,5 @@
 import React from 'react';
+import Velocity from 'velocity-animate/velocity';
 import styles from '../styles/components/data-filter.less';
 
 
@@ -15,25 +16,29 @@ class DataFilter extends React.Component {
     filters: defaultFilters
   };
 
+  state = {
+    open: false
+  };
+
   render() {
     const { filters } = this.props;
 
     return (
       <div className={styles.container}>
-        <div className={styles.header}>
+        <div className={this.state.open ? styles.opened : styles.header} ref={header => this._header = header}>
           <div className={styles.title}>
             Filters
           </div>
           <ul className={styles.actions}>
-            <li className={styles.action}>
+            <li className={styles.action} onClick={this._handleOnClickToggle.bind(this)}>
               <i className="fa fa-fw fa-filter" />
             </li>
           </ul>
         </div>
-        <div className={styles.body}>
+        <div className={styles.body} ref={body => this._body = body}>
           <div className={styles.filters}>
-            {filters.map(filter => (
-              <div className={styles.formGroup}>
+            {filters.map((filter, i) => (
+              <div className={styles.formGroup} key={i}>
                 <label>{filter.label}</label>
                 <input defaultValue={filter.value} />
               </div>
@@ -42,6 +47,17 @@ class DataFilter extends React.Component {
         </div>
       </div>
     );
+  }
+
+  _handleOnClickToggle() {
+    if (this.state.open) {
+      Velocity(this._body, 'slideUp', { duration: 500 })
+      .then(() => this.setState({ open: !this.state.open }));
+    }
+    else {
+      this.setState({ open: !this.state.open });
+      Velocity(this._body, 'slideDown', { duration: 500 });
+    }
   }
 
 }
