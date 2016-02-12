@@ -1,24 +1,12 @@
-import { capitalize } from './index';
-
-
-function getExpensesInRange(expenses, from, to) {
-  return expenses.slice(0, 10).sort((a, b) => {
-    if (a.created_at === b.created_at) {
-      return 0;
-    }
-    return a.created_at > b.created_at ? 1 : -1;
-  });  // TODO: Use real date range
-}
+import { capitalize, getExpensesInRange } from './index';
 
 
 export function calcExpensesEvolution(expenses) {
-  const expensesInRange = getExpensesInRange(expenses);
-
   // TODO: Control when two expenses happens in the same day
-  const expensesEvolution = expensesInRange.map(expense => [expense.created_at.getTime(), expense.amount]);
+  const expensesEvolution = expenses.map(expense => [expense.created_at.getTime(), expense.amount]);
 
   let total = 0.0;
-  const totalAmount = expensesInRange.map(expense => [
+  const totalAmount = expenses.map(expense => [
     expense.created_at.getTime(),
     Number((total += expense.amount).toFixed(2))
   ]);
@@ -51,9 +39,7 @@ export function calcExpensesEvolution(expenses) {
 }
 
 export function calcExpensesByCategory(expenses) {
-  const expensesInRange = getExpensesInRange(expenses);
-
-  const expensesByCategory = expensesInRange.reduce((data, expense) => {
+  const expensesByCategory = expenses.reduce((data, expense) => {
     data[expense.category.name] = data[expense.category.name] ||  0.0;
     data[expense.category.name] += expense.amount;
     return data;

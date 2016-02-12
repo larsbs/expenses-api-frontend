@@ -32,8 +32,7 @@ function fetchExpenses() {
       if (a.created_at === b.created_at) {
         return 0;
       }
-      // Reverse sort
-      return a.created_at > b.created_at ? -1 : 1;
+      return a.created_at > b.created_at ? 1 : -1;
     });
     return finalExpenses;
   });

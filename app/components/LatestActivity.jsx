@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import { capitalize } from '../utils';
+import { capitalize, reverseArray } from '../utils';
 
 import styles from '../styles/components/latest-activity.less';
 
@@ -32,7 +32,7 @@ const LatestActivity = ({ expenses }) => (
     <div className={styles.activitiesListContainer}>
       <div className={styles.cronoBar}></div>
       <div className={styles.activitiesList}>
-        {expenses.slice(0, 10).map(expense => (
+        {reverseArray(expenses).slice(0, 10).map(expense => (
           <Activity expense={expense} key={expense.id} />
         ))}
       </div>

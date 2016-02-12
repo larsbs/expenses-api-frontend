@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { getExpensesInRange } from '../utils';
 import { populateBelongsTo } from '../utils/populate';
 import { calcExpensesEvolution, calcExpensesByCategory } from '../utils/charts';
 
@@ -47,7 +48,7 @@ const Analytics = ({ expenses, expensesEvolution, expensesByCategory }) => (
 );
 
 const mapStateToProps = state => {
-  const expenses = state.expenses.entities;
+  const expenses = getExpensesInRange(state.expenses.entities);
   const users = state.users.entities;
   const categories = state.categories.entities;
 
