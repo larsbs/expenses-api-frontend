@@ -1,0 +1,75 @@
+//------------------------
+// SPINNER
+//
+// Author: Lorenzo Ruiz
+//------------------------
+
+@import '../colors';
+
+
+:local(.spinner) {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+
+  @keyframes cubeGrid {
+    0%, 70%, 100% {
+      transform: scale3D(1, 1, 1);
+    } 35% {
+      transform: scale3D(0, 0, 1);
+    }
+  }
+}
+
+:local(.cube) {
+  width: 33%;
+  height: 33%;
+  background-color: fade(@green, 25%);
+  float: left;
+  animation: cubeGrid 1.3s infinite ease-in-out;
+}
+
+:local(.cube1) {
+  composes: cube;
+  animation-delay: 0.2s;
+}
+
+:local(.cube2) {
+  composes: cube;
+  animation-delay: 0.3s;
+}
+
+:local(.cube3) {
+  composes: cube;
+  animation-delay: 0.4s;
+}
+
+:local(.cube4) {
+  composes: cube;
+  animation-delay: 0.1s;
+}
+
+:local(.cube5) {
+  composes: cube;
+  animation-delay: 0.2s;
+}
+
+:local(.cube6) {
+  composes: cube;
+  animation-delay: 0.3s;
+}
+
+:local(.cube7) {
+  composes: cube;
+  animation-delay: 0.0s;
+}
+
+:local(.cube8) {
+  composes: cube;
+  animation-delay: 0.1s;
+}
+
+:local(.cube9) {
+  composes: cube;
+  animation-delay: 0.2s;
+}

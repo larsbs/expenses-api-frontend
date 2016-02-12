@@ -3,25 +3,26 @@ import { connect } from 'react-redux';
 
 import { loadApp } from '../actions/application';
 import Sidebar from '../components/Sidebar';
+import Spinner from '../components/Spinner';
 import styles from '../styles/containers/application.less';
 
 
 
 class Application extends React.Component {
 
-  componentDidMount() {
-    const { shouldLoad, dispatch } = this.props;
-    dispatch(loadApp());
-  }
-
   render() {
     const { children, isLoading } = this.props;
 
     let app;
-    if (isLoading) {
+    if (true) {
       app = (
         <div className={styles.application}>
-          Loading...
+          <div className={styles.loading}>
+            <Spinner width="100" height="100" borderRadius="15" />
+            <h2 className={styles.loadingTitle}>
+              Wait a moment, the app is loading...
+            </h2>
+          </div>
         </div>
       );
     }
@@ -40,16 +41,8 @@ class Application extends React.Component {
 }
 
 const mapStateToProps = state => {
-  //const shouldLoad = (
-    //state.users.entities.length < 1 ||
-    //state.expenses.entities.length < 1 ||
-    //state.categories.entities.length < 1
-  //);
-
-  const shouldLoad = false;
   return {
-    shouldLoad,
-    isLoading: state.isFetching && shouldLoad
+    isLoading: state.application.isLoading
   };
 };
 

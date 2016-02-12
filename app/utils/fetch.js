@@ -8,12 +8,22 @@ function fetchEntity(entity) {
     .then(json => ({ data: json[entity] }));
 }
 
+function latencyFetchEntity(entity) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      fetchEntity(entity)
+      .then(resolve)
+      .catch(reject);
+    }, 4000);
+  });
+}
+
 export function fetchExpenses() {
   return fetchEntity('expenses');
 }
 
 export function fetchUsers() {
-  return fetchEntity('users');
+  return latencyFetchEntity('users');
 }
 
 export function fetchCategories() {
