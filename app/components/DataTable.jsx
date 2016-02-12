@@ -19,10 +19,6 @@ class DataTable extends React.Component {
     currentPage: 1
   };
 
-  componentDidMount() {
-    const { entries } = this.props;
-  }
-
   componentDidUpdate() {
     this._totalPages = Math.ceil(this.props.entries.length / this.state.entriesPerPage);
   }
