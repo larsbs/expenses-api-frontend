@@ -3,6 +3,7 @@ import React from 'react';
 import Header from '../components/Header';
 import LatestActivity from '../components/LatestActivity';
 import Chart from '../components/Chart';
+import DataFilter from '../components/DataFilter';
 import DataTable from '../components/DataTable';
 
 import styles from '../styles/containers/analytics.less';
@@ -98,6 +99,7 @@ const Analytics = () => (
       <button className={headerStyles.button}>Add Life</button>
     </Header>
     <div className={styles.analyticsContent}>
+      <DataFilter />
       <DataTable />
     { /*
       <div className={styles.analytics}>
