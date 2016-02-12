@@ -1,4 +1,4 @@
-export const LOAD_APP = Symbol.for('LOAD_APP');
+export const LOAD_APP = 'LOAD_APP';
 
 export function loadApp() {
   return {

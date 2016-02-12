@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { loadApp } from '../actions/application';
+import { loadUsers } from '../actions/users';
 import Sidebar from '../components/Sidebar';
 import styles from '../styles/containers/application.less';
 
@@ -11,9 +12,7 @@ class Application extends React.Component {
 
   componentDidMount() {
     const { shouldLoad, dispatch } = this.props;
-    if (shouldLoad) {
-      dispatch(loadApp());
-    }
+    dispatch(loadUsers());
   }
 
   render() {

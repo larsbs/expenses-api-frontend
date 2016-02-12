@@ -19,6 +19,7 @@
     "babel-core": "^6.5.1",
     "babel-eslint": "^4.1.8",
     "babel-loader": "^6.2.2",
+    "babel-polyfill": "^6.5.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
@@ -36,19 +37,14 @@
     "less-loader": "^2.2.2",
     "mocha": "^2.4.5",
     "mocha-loader": "^0.7.1",
-    "moment": "^2.11.2",
     "normalize.css": "^3.0.3",
     "proxy-middleware": "^0.15.0",
-    "redux-devtools-dock-monitor": "^1.0.1",
-    "redux-devtools-log-monitor": "^1.0.4",
     "remote-redux-devtools": "^0.1.2",
-    "remotedev-server": "0.0.3",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
     "url": "^0.11.0",
     "url-loader": "^0.5.7",
     "velocity-animate": "^1.2.3",
-    "velocity.js": "^0.3.4",
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1"
   },
@@ -61,6 +57,7 @@
     "react-router": "^2.0.0",
     "react-router-redux": "^3.0.0",
     "redux": "^3.3.1",
-    "redux-devtools": "^3.1.1"
+    "redux-devtools": "^3.1.1",
+    "redux-saga": "^0.7.0"
   }
 }

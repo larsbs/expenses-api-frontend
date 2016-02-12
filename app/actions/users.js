@@ -1,4 +1,4 @@
-export const LOAD_USERS = Symbol.for('LOAD_USERS');
+export const LOAD_USERS = 'LOAD_USERS';
 
 export function loadUsers() {
   return {
@@ -7,7 +7,19 @@ export function loadUsers() {
 }
 
 
-export const ADD_USER = Symbol.for('ADD_USER');
+export const RECEIVE_USERS = 'RECEIVE_USERS';
+
+export function receiveUsers(users) {
+  return {
+    type: RECEIVE_USERS,
+    payload: {
+      users
+    }
+  };
+}
+
+
+export const ADD_USER = 'ADD_USER';
 
 export function addUser() {
   return {
@@ -16,7 +28,7 @@ export function addUser() {
 }
 
 
-export const UPDATE_USER = Symbol.for('UPDATE_USER');
+export const UPDATE_USER = 'UPDATE_USER';
 
 export function updateUser() {
   return {
@@ -25,7 +37,7 @@ export function updateUser() {
 }
 
 
-export const DELETE_USER = Symbol.for('DELETE_USER');
+export const DELETE_USER = 'DELETE_USER';
 
 export function deleteUser() {
   return {

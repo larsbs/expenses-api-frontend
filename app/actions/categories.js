@@ -1,4 +1,4 @@
-export const LOAD_CATEGORIES = Symbol.for('LOAD_CATEGORIES');
+export const LOAD_CATEGORIES = 'LOAD_CATEGORIES';
 
 export function loadCategories() {
   return {
@@ -7,7 +7,7 @@ export function loadCategories() {
 }
 
 
-export const ADD_CATEGORY = Symbol.for('ADD_CATEGORY');
+export const ADD_CATEGORY = 'ADD_CATEGORY';
 
 export function addCategory() {
   return {
@@ -16,7 +16,7 @@ export function addCategory() {
 }
 
 
-export const UPDATE_CATEGORY = Symbol.for('UPDATE_CATEGORY');
+export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 
 export function updateCategory() {
   return {
@@ -25,7 +25,7 @@ export function updateCategory() {
 }
 
 
-export const DELETE_CATEGORY = Symbol.for('DELETE_CATEGORY');
+export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 
 export function deleteCategory() {
   return {
