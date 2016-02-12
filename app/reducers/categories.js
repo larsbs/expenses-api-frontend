@@ -1,34 +1,22 @@
-export const LOAD_CATEGORIES = Symbol.for('LOAD_CATEGORIES');
-
-export function loadCategories() {
-  return {
-    type: LOAD_CATEGORIES
-  };
-}
+import * as CategoriesActions from '../actions/categories';
 
 
-export const ADD_CATEGORY = Symbol.for('ADD_CATEGORY');
+const initialState = {
+  isFetching: false,
+  categories: []
+};
 
-export function addCategory() {
-  return {
-    type: ADD_CATEGORY
-  };
-}
-
-
-export const UPDATE_CATEGORY = Symbol.for('UPDATE_CATEGORY');
-
-export function updateCategory() {
-  return {
-    type: UPDATE_CATEGORY
-  };
-}
-
-
-export const DELETE_CATEGORY = Symbol.for('DELETE_CATEGORY');
-
-export function deleteCategory() {
-  return {
-    type: DELETE_CATEGORY
-  };
+export default function categories(state = initialState, action) {
+  switch (action.type) {
+      case CategoriesActions.LOAD_CATEGORIES:
+        return state;
+      case CategoriesActions.ADD_CATEGORY:
+        return state;
+      case CategoriesActions.UPDATE_CATEGORY:
+        return state;
+      case CategoriesActions.DELETE_CATEGORY:
+        return state;
+      default:
+        return state;
+  }
 }

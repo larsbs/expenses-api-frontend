@@ -41,6 +41,8 @@
     "proxy-middleware": "^0.15.0",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.4",
+    "remote-redux-devtools": "^0.1.2",
+    "remotedev-server": "0.0.3",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
     "url": "^0.11.0",

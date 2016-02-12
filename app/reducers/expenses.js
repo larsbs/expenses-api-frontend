@@ -1,34 +1,22 @@
-export const LOAD_EXPENSES = Symbol.for('LOAD_EXPENSES');
-
-export function loadExpenses() {
-  return {
-    type: LOAD_EXPENSES
-  };
-}
+import * as ExpensesActions from '../actions/expenses';
 
 
-export const ADD_EXPENSE = Symbol.for('ADD_EXPENSE');
+const initialState = {
+  isFetching: false,
+  expenses: []
+};
 
-export function addExpense() {
-  return {
-    type: ADD_EXPENSE
-  };
-}
-
-
-export const UPDATE_EXPENSE = Symbol.for('UPDATE_EXPENSE');
-
-export function updateExpense() {
-  return {
-    type: UPDATE_EXPENSE
-  };
-}
-
-
-export const DELETE_EXPENSE = Symbol.for('DELETE_EXPENSE');
-
-export function deleteExpense() {
-  return {
-    type: DELETE_EXPENSE
-  };
+export default function expenses(state = initialState, action) {
+  switch (action.type) {
+      case ExpensesActions.LOAD_EXPENSES:
+        return state;
+      case ExpensesActions.ADD_EXPENSE:
+        return state;
+      case ExpensesActions.UPDATE_EXPENSE:
+        return state;
+      case ExpensesActions.DELETE_EXPENSE:
+        return state;
+      default:
+        return state;
+  }
 }

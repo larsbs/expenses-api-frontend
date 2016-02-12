@@ -6,18 +6,13 @@ import { Router, browserHistory } from 'react-router';
 import store from './store';
 import routes from './routes';
 
-import DevTools from './containers/DevTools';
-
 
 import './styles/app.less';
 
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>
-      <Router history={browserHistory} routes={routes} />
-      <DevTools />
-    </div>
+    <Router history={browserHistory} routes={routes} />
   </Provider>,
   document.getElementById('root')
 );
