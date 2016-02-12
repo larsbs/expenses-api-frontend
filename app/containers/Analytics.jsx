@@ -99,9 +99,6 @@ const Analytics = () => (
       <button className={headerStyles.button}>Add Life</button>
     </Header>
     <div className={styles.analyticsContent}>
-      <DataFilter />
-      <DataTable />
-    { /*
       <div className={styles.analytics}>
         <div className={styles.dateRange}>
           <i className="fa fa-fw fa-calendar" /> Jan 2016 - Feb 2016
@@ -112,7 +109,8 @@ const Analytics = () => (
         </div>
       </div>
       <LatestActivity />
-    */ }
+      <DataFilter />
+      <DataTable />
     </div>
   </main>
 );
