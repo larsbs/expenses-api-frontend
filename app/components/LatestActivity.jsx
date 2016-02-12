@@ -1,12 +1,9 @@
 import React from 'react';
 import moment from 'moment';
 
+import { capitalize } from '../utils';
+
 import styles from '../styles/components/latest-activity.less';
-
-
-function capitalize(str) {
-  return `${str[0].toUpperCase()}${str.slice(1)}`;
-}
 
 
 const Activity = ({ expense }) => {

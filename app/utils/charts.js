@@ -1,3 +1,6 @@
+import { capitalize } from './index';
+
+
 function getExpensesInRange(expenses, from, to) {
   return expenses.slice(0, 10).sort((a, b) => {
     if (a.created_at === b.created_at) {
@@ -11,6 +14,7 @@ function getExpensesInRange(expenses, from, to) {
 export function calcExpensesEvolution(expenses) {
   const expensesInRange = getExpensesInRange(expenses);
 
+  // TODO: Control when two expenses happens in the same day
   const expensesEvolution = expensesInRange.map(expense => [expense.created_at.getTime(), expense.amount]);
 
   let total = 0.0;
@@ -31,6 +35,9 @@ export function calcExpensesEvolution(expenses) {
         text: 'Amount'
       }
     },
+    tooltip: {
+      pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.y} €</b><br/>'
+    },
     series: [{
       type: 'line',
       name: 'Expenses',
@@ -44,6 +51,21 @@ export function calcExpensesEvolution(expenses) {
 }
 
 export function calcExpensesByCategory(expenses) {
+  const expensesInRange = getExpensesInRange(expenses);
+
+  const expensesByCategory = expensesInRange.reduce((data, expense) => {
+    data[expense.category.name] = data[expense.category.name] ||  0.0;
+    data[expense.category.name] += expense.amount;
+    return data;
+  }, {});
+
+  const data = Object.keys(expensesByCategory).map(key => {
+    return {
+      name: capitalize(key),
+      y: Number(expensesByCategory[key].toFixed(2))
+    };
+  });
+
   return {
     chart: {
       type: 'pie'
@@ -58,6 +80,9 @@ export function calcExpensesByCategory(expenses) {
       itemMarginBottom: 10,
       padding: 50
     },
+    tooltip: {
+      pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.y} €</b><br/>'
+    },
     plotOptions: {
       pie: {
         allowPointSelect: true,
@@ -69,29 +94,9 @@ export function calcExpensesByCategory(expenses) {
       }
     },
     series: [{
-      name: 'Brands',
+      name: 'Expenses By Category',
       colorByPoint: true,
-      data: [{
-        name: 'Microsoft Internet Explorer',
-        y: 56.33
-      }, {
-        name: 'Chrome',
-        y: 24.03,
-        sliced: true,
-        selected: true
-      }, {
-        name: 'Firefox',
-        y: 10.38
-      }, {
-        name: 'Safari',
-        y: 4.77
-      }, {
-        name: 'Opera',
-        y: 0.91
-      }, {
-        name: 'Proprietary or Undetectable',
-        y: 0.2
-      }]
+      data: data
     }]
   };
 }
