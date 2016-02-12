@@ -1,4 +1,4 @@
-import { fork, take, call, put } from 'redux-saga';
+import { fork, call, put } from 'redux-saga';
 
 import { fetchAll } from '../utils/fetch';
 import { receiveExpenses } from '../actions/expenses';
@@ -16,6 +16,7 @@ function* loadApp() {
   yield put(finishLoading());
 }
 
-export default function* root(getState) {
+
+export default function* root(/* getState */) {
   yield fork(loadApp);
 }
