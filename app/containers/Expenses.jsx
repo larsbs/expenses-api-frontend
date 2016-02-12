@@ -12,7 +12,7 @@ const breadcrumbs = [{
 const Expenses = () => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
-      <button className={headerStyles.button}>Add Expense</button>
+      <button className={headerStyles.button}><i className="fa fa-fw fa-plus" /> Add Expense</button>
     </Header>
   </main>
 );

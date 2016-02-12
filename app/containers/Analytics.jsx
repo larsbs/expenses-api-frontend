@@ -96,7 +96,7 @@ const expensesByCategory = {
 const Analytics = () => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
-      <button className={headerStyles.button}>Add Life</button>
+      <button className={headerStyles.button}><i className="fa fa-fw fa-calendar"/> Select Date Range</button>
     </Header>
     <div className={styles.analyticsContent}>
       <div className={styles.container}>

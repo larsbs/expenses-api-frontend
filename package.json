@@ -4,11 +4,12 @@
   "description": "Application to manage expenses.",
   "main": "index.js",
   "scripts": {
-    "webpack-server": "webpack-dev-server --inline --hot --progress --colors --content-base public/",
+    "webpack-server": "webpack-dev-server --inline --hot --progress --colors --content-base server/",
     "webpack-test-server": "webpack-dev-server --inline --hot --progress --colors --config webpack.test.config.js",
+    "server": "node server/server.js",
     "lint": "eslint main.js app/ test/",
     "test": "npm run webpack-test-server",
-    "start": "npm run webpack-server"
+    "start": "npm run server & npm run webpack-server"
   },
   "keywords": [],
   "author": "Lorenzo Ruiz <lars.bs@hotmail.com>",
@@ -26,6 +27,7 @@
     "eslint": "^1.10.3",
     "eslint-loader": "^1.2.1",
     "eslint-plugin-react": "^3.16.1",
+    "express": "^4.13.4",
     "file-loader": "^0.8.5",
     "font-awesome": "^4.5.0",
     "highcharts": "^4.2.3",
@@ -36,8 +38,10 @@
     "mocha-loader": "^0.7.1",
     "moment": "^2.11.2",
     "normalize.css": "^3.0.3",
+    "proxy-middleware": "^0.15.0",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
+    "url": "^0.11.0",
     "url-loader": "^0.5.7",
     "velocity-animate": "^1.2.3",
     "velocity.js": "^0.3.4",
