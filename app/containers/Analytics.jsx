@@ -21,12 +21,15 @@ const breadcrumbs = [{
   title: 'Analytics'
 }];
 
-const tableColumns = [
+const expensesColumns = [
   { attr: 'created_at', label: 'Date', formatter: value => moment(value).format('DD/MM/YYYY HH:MM A') },
   { attr: 'note', label: 'Note' },
   { attr: 'amount', label: 'Amount', formatter: value => value + '€' },
   { attr: 'user.username', label: 'User' },
   { attr: 'category.name', label: 'Category', formatter: value => capitalize(value) },
+];
+
+const expensesFilters = [
 ];
 
 const Analytics = ({
@@ -54,14 +57,15 @@ const Analytics = ({
           <i className="fa fa-fw fa-credit-card" /> Latest expenses
         </div>
         <DataFilter />
-        <DataTable columns={tableColumns} entries={reverseArray(expenses)} />
+        <DataTable columns={expensesColumns} entries={reverseArray(expenses)} />
       </div>
     </div>
   </main>
 );
 
 const mapStateToProps = state => {
-  const expenses = getExpensesInRange(state.expenses.entities);
+  //const expenses = getExpensesInRange(state.expenses.entities);
+  const expenses = state.expenses.entities;
   const users = state.users.entities;
   const categories = state.categories.entities;
 

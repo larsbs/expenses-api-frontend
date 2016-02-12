@@ -2,10 +2,28 @@ import React from 'react';
 import styles from '../styles/components/data-table.less';
 
 
+function isValidPage(currentPage) {
+  return currentPage && ! isNaN(currentPage) && currentPage !== '';
+}
+
+
+function ifNaNDefault(value, defaultValue) {
+  return isNaN(value) ? defaultValue : value;
+}
+
+
 class DataTable extends React.Component {
 
+  state = {
+    entriesPerPage: 10,
+    currentPage: 1
+  };
+
+  componentDidMount() {
+    const { entries } = this.props;
+  }
+
   render() {
-    const currentPage = 1;
     const { columns, entries } = this.props;
     const { firstShownEntry, lastShownEntry, shownEntries } = this._getShownEntries();
 
@@ -13,10 +31,14 @@ class DataTable extends React.Component {
       <div className={styles.DataTableContainer + ' DataTable-container'}>
         <div className={styles.shownItemsControls}>
           <div className={styles.shownItemsSelectorContainer}>
-            <select className={styles.shownItemsSelector}>
-              <option>10</option>
-              <option>30</option>
-              <option>50</option>
+            <select
+              className={styles.shownItemsSelector}
+              value={this.state.entriesPerPage}
+              onChange={this._handleOnChangeEntriesPerPage.bind(this)}
+            >
+              <option value="10">10</option>
+              <option value="30">30</option>
+              <option value="50">50</option>
             </select>
             entries per page
           </div>
@@ -50,7 +72,7 @@ class DataTable extends React.Component {
               <i className="fa fa-caret-left fa-fw" /> Prev
             </li>
             <li>
-              <input type="text" defaultValue={currentPage} />
+              <input type="text" defaultValue={this.state.currentPage} />
             </li>
             <li>
               Next <i className="fa fa-caret-right fa-fw" />
@@ -61,12 +83,42 @@ class DataTable extends React.Component {
     );
   }
 
+
   _getShownEntries() {
+    const firstShownEntry = ifNaNDefault(
+      Math.min(
+        this.props.entries.length,
+        this.state.entriesPerPage * this.state.currentPage - this.state.entriesPerPage + 1
+      ), 0
+    );
+    const lastShownEntry = ifNaNDefault(
+      Math.min(
+        this.state.entriesPerPage * this.state.currentPage,
+        this.props.entries.length
+      ), 0
+    );
+    const shownEntries = this.props.entries.slice(firstShownEntry - 1, lastShownEntry);
     return {
-      firstShownEntry: 0,
-      lastShownEntry: 1,
-      shownEntries: this.props.entries
+      firstShownEntry,
+      lastShownEntry,
+      shownEntries
     };
+  }
+
+  _handleOnChangeEntriesPerPage(event) {
+    this.setState({ entriesPerPage: event.target.value });
+  }
+
+  _handleOnClickNext() {
+    if (this.state.currentPage > 1) {
+      this.setState({ currentPage: this.state.currentPage - 1 });
+    }
+  }
+
+  _handleOnClickPrev() {
+    if (this.state.currentPage < this._totalPages) {
+
+    }
   }
 
 }
