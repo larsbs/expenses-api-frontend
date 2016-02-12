@@ -1,4 +1,4 @@
-import { capitalize, getExpensesInRange } from './index';
+import { capitalize } from './index';
 
 
 export function calcExpensesEvolution(expenses) {

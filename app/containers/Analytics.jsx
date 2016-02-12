@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
-import { getExpensesInRange } from '../utils';
+import { getExpensesInRange, reverseArray, capitalize } from '../utils';
 import { populateBelongsTo } from '../utils/populate';
 import { calcExpensesEvolution, calcExpensesByCategory } from '../utils/charts';
 
@@ -20,7 +21,19 @@ const breadcrumbs = [{
   title: 'Analytics'
 }];
 
-const Analytics = ({ expenses, expensesEvolution, expensesByCategory }) => (
+const tableColumns = [
+  { attr: 'created_at', label: 'Date', formatter: value => moment(value).format('DD/MM/YYYY HH:MM A') },
+  { attr: 'note', label: 'Note' },
+  { attr: 'amount', label: 'Amount', formatter: value => value + '€' },
+  { attr: 'user.username', label: 'User' },
+  { attr: 'category.name', label: 'Category', formatter: value => capitalize(value) },
+];
+
+const Analytics = ({
+  expenses,
+  expensesEvolution,
+  expensesByCategory
+}) => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
       <button className={headerStyles.button}><i className="fa fa-fw fa-calendar"/> Select Date Range</button>
@@ -41,7 +54,7 @@ const Analytics = ({ expenses, expensesEvolution, expensesByCategory }) => (
           <i className="fa fa-fw fa-credit-card" /> Latest expenses
         </div>
         <DataFilter />
-        <DataTable />
+        <DataTable columns={tableColumns} entries={reverseArray(expenses)} />
       </div>
     </div>
   </main>

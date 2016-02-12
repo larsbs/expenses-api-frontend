@@ -48,13 +48,17 @@
 
   > thead > tr > th {
     text-align: left;
-    padding: 8px;
+    padding: 8px 15px;
     padding-bottom: 15px;
     vertical-align: bottom;
     border-bottom: 1px solid @light-gray;
 
     &:first-child {
       padding-left: 30px;
+    }
+
+    &:last-child {
+      padding-right: 30px;
     }
   }
 
@@ -68,11 +72,15 @@
     height: 60px;
     vertical-align: middle;
     color: @darker-gray;
-    padding: 8px;
+    padding: 8px 15px;
     border-top: 1px solid @light-gray;
 
     &:first-child {
       padding-left: 30px;
+    }
+
+    &:last-child {
+      padding-right: 30px;
     }
   }
 }

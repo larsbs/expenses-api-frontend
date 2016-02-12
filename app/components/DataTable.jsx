@@ -4,26 +4,6 @@ import styles from '../styles/components/data-table.less';
 
 class DataTable extends React.Component {
 
-  static defaultProps = {
-    columns: [
-      { attr: 'id', label: 'Id' },
-      { attr: 'url', label: 'Url' },
-      { attr: 'name', label: 'Name' },
-      { attr: 'address', label: 'Address' },
-    ],
-    entries: [{
-      id: 1,
-      name: 'Lorem Ipsum',
-      url: 'http://lorem.herokuapp.com',
-      address: 'C/ Lorem, 7',
-    }, {
-      id: 2,
-      name: 'Dolor Sit Amet',
-      url: 'http://dolor.herokuapp.com',
-      address: 'C/ Dolor, 7',
-    }]
-  };
-
   render() {
     const currentPage = 1;
     const { columns, entries } = this.props;
@@ -55,7 +35,9 @@ class DataTable extends React.Component {
               <tr key={entry.id}>
                 {columns.map((column, i) => (
                   <td key={entry.id + '-' + i}>
-                    {entry[column.attr]}
+                    {column.formatter ? column.formatter(
+                      column.attr.split('.').reduce((o,i)=>o[i], entry)
+                     ) : column.attr.split('.').reduce((o,i)=>o[i], entry)}
                   </td>
                 ))}
               </tr>
