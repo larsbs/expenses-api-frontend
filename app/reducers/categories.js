@@ -2,14 +2,15 @@ import * as CategoriesActions from '../actions/categories';
 
 
 const initialState = {
-  isFetching: false,
-  categories: []
+  entities: []
 };
 
 export default function categories(state = initialState, action) {
   switch (action.type) {
-      case CategoriesActions.LOAD_CATEGORIES:
-        return state;
+      case CategoriesActions.RECEIVE_CATEGORIES:
+        return Object.assign({}, state, {
+          entities: action.payload.categories
+        });
       case CategoriesActions.ADD_CATEGORY:
         return state;
       case CategoriesActions.UPDATE_CATEGORY:

@@ -2,14 +2,15 @@ import * as ExpensesActions from '../actions/expenses';
 
 
 const initialState = {
-  isFetching: false,
-  expenses: []
+  entities: []
 };
 
 export default function expenses(state = initialState, action) {
   switch (action.type) {
-      case ExpensesActions.LOAD_EXPENSES:
-        return state;
+      case ExpensesActions.RECEIVE_EXPENSES:
+        return Object.assign({}, state, {
+          entities: action.payload.expenses
+        });
       case ExpensesActions.ADD_EXPENSE:
         return state;
       case ExpensesActions.UPDATE_EXPENSE:

@@ -7,6 +7,18 @@ export function loadExpenses() {
 }
 
 
+export const RECEIVE_EXPENSES = 'RECEIVE_EXPENSES';
+
+export function receiveExpenses(expenses) {
+  return {
+    type: RECEIVE_EXPENSES,
+    payload: {
+      expenses
+    }
+  };
+}
+
+
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 
 export function addExpense() {

@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { populateBelongsTo } from '../utils/populate';
 
 import Header from '../components/Header';
 import LatestActivity from '../components/LatestActivity';
@@ -93,7 +96,7 @@ const expensesByCategory = {
   }]
 };
 
-const Analytics = () => (
+const Analytics = ({ expenses }) => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
       <button className={headerStyles.button}><i className="fa fa-fw fa-calendar"/> Select Date Range</button>
@@ -109,7 +112,7 @@ const Analytics = () => (
             <Chart title="expenses by category" data={expensesByCategory} />
           </div>
         </div>
-        <LatestActivity />
+        <LatestActivity expenses={expenses} />
         <div className={styles.title}>
           <i className="fa fa-fw fa-credit-card" /> Latest expenses
         </div>
@@ -120,5 +123,19 @@ const Analytics = () => (
   </main>
 );
 
+const mapStateToProps = state => {
+  const expenses = state.expenses.entities;
+  const users = state.users.entities;
+  const categories = state.categories.entities;
 
-export default Analytics;
+  return {
+    expenses: expenses.map(e => {
+      e = populateBelongsTo('user', e, users, 'user_id');
+      e = populateBelongsTo('category', e, categories, 'category_id');
+      return e;
+    })
+  };
+};
+
+
+export default connect(mapStateToProps)(Analytics);

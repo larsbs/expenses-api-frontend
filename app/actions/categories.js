@@ -7,6 +7,18 @@ export function loadCategories() {
 }
 
 
+export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
+
+export function receiveCategories(categories) {
+  return {
+    type: RECEIVE_CATEGORIES,
+    payload: {
+      categories
+    }
+  };
+}
+
+
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 
 export function addCategory() {

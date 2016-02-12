@@ -1,15 +1,18 @@
 import { fork, take, call, put } from 'redux-saga';
 
-import { fetchUsers } from '../utils/fetch';
-import * as UserActions from '../actions/users';
+import { fetchAll } from '../utils/fetch';
+import { receiveExpenses } from '../actions/expenses';
 import { receiveUsers } from '../actions/users';
+import { receiveCategories } from '../actions/categories';
 import { showLoading, finishLoading } from '../actions/application';
 
 
 function* loadApp() {
   yield put(showLoading());
-  const users = yield call(fetchUsers);
+  const [ expenses, users, categories ] = yield call(fetchAll);
   yield put(receiveUsers(users));
+  yield put(receiveExpenses(expenses));
+  yield put(receiveCategories(categories));
   yield put(finishLoading());
 }
 

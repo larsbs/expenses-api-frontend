@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { loadApp } from '../actions/application';
 import Sidebar from '../components/Sidebar';
 import Spinner from '../components/Spinner';
+
 import styles from '../styles/containers/application.less';
 
 
@@ -17,27 +17,23 @@ const Loading = () => (
   </div>
 );
 
-class Application extends React.Component {
 
-  render() {
-    const { children, isLoading } = this.props;
+const Application = ({ isLoading, children }) => {
+  const loading = (
+    <div className={styles.application}>
+      <Loading />
+    </div>
+  );
+  const app = (
+    <div className={styles.application}>
+      <Sidebar styleId="sidebar" />
+      {children}
+    </div>
+  );
 
-    const loading = (
-      <div className={styles.application}>
-        <Loading />
-      </div>
-    );
-    const app = (
-      <div className={styles.application}>
-        <Sidebar styleId="sidebar" />
-        {children}
-      </div>
-    );
+  return isLoading ? loading : app;
+};
 
-    return isLoading ? loading : app;
-  }
-
-}
 
 const mapStateToProps = state => {
   return {
