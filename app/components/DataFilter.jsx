@@ -6,7 +6,7 @@ import styles from '../styles/components/data-filter.less';
 function matchFilter(attr, condition) {
   return item => {
     const itemAttr = attr.split('.').reduce((o, i) => o[i], item);
-    return itemAttr.indexOf(condition) > -1;
+    return itemAttr.toLowerCase().indexOf(condition.toLowerCase()) > -1;
   };
 }
 
