@@ -1,3 +1,15 @@
+export const SET_CATEGORIES_FILTER = 'SET_CATEGORIES_FILTER';
+
+export function setCategoriesFilter(filter) {
+  return {
+    type: SET_CATEGORIES_FILTER,
+    payload: {
+      filter
+    }
+  };
+}
+
+
 export const LOAD_CATEGORIES = 'LOAD_CATEGORIES';
 
 export function loadCategories() {
