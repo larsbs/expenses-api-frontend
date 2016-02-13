@@ -40,7 +40,7 @@ const AddUserModal = ({ isModalOpen, onCloseModal }) => (
       </div>
       <div className={modalStyles.footer}>
         <button className={formStyles.submitButton}>Add</button>
-        <button className={formStyles.button}>Cancel</button>
+        <button className={formStyles.button} onClick={onCloseModal}>Cancel</button>
       </div>
     </div>
   </Modal>
