@@ -11,3 +11,8 @@ export function getExpensesInRange(expenses, from, to) {
 export function reverseArray(arr) {
   return arr.slice(0).reverse();
 }
+
+
+export function createFakeId() {
+  return Date.now() + Math.floor(Math.random() * 1000000);
+}

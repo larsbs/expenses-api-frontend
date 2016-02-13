@@ -24,6 +24,12 @@ export default function users(state = initialState, action) {
             action.payload.user
           ]
         });
+      case UsersActions.ADD_USER_SUCCESS:
+        return Object.assign({}, state, {
+        });
+      case UsersActions.ADD_USER_FAILED:
+        return Object.assign({}, state, {
+        });
       case UsersActions.UPDATE_USER:
         return state;
       case UsersActions.DELETE_USER:

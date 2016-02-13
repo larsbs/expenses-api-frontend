@@ -45,6 +45,24 @@ export function addUser(username) {
 }
 
 
+export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS';
+
+export function addUserSuccess() {
+  return {
+    type: ADD_USER_SUCCESS
+  };
+}
+
+
+export const ADD_USER_FAILED = 'ADD_USER_FAILED';
+
+export function addUserFailed() {
+  return {
+    type: ADD_USER_FAILED
+  };
+}
+
+
 export const UPDATE_USER = 'UPDATE_USER';
 
 export function updateUser() {

@@ -51,7 +51,7 @@ class AddUserModal extends React.Component {
                   placeholder="Write an username for the user"
                   className={this.state.hasError ? formStyles.errorInputField : formStyles.inputField}
                   type="text"
-                  onFocus={this._removeErrors.bind(this)}/>
+                  onFocus={this._removeErrors.bind(this)} />
                 <span className={formStyles.errorMessage}>{this.state.errorMsg}</span>
               </div>
             </form>
