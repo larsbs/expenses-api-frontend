@@ -5,6 +5,7 @@ import application from './application';
 import expenses from './expenses';
 import users from './users';
 import categories from './categories';
+import analytics from './analytics';
 
 
 export default combineReducers({
@@ -13,4 +14,5 @@ export default combineReducers({
   expenses,
   users,
   categories,
+  analytics,
 });

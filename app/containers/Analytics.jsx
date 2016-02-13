@@ -5,6 +5,7 @@ import moment from 'moment';
 import { getExpensesInRange, reverseArray, capitalize } from '../utils';
 import { populateBelongsTo } from '../utils/populate';
 import { calcExpensesEvolution, calcExpensesByCategory } from '../utils/charts';
+import { setAnalyticsFilter } from '../actions/analytics';
 
 import Header from '../components/Header';
 import LatestActivity from '../components/LatestActivity';
@@ -30,12 +31,19 @@ const expensesColumns = [
 ];
 
 const expensesFilters = [
+  { attr: 'created_at', label: 'Date', type: 'date-range' },
+  { attr: 'note', label: 'Note', type: 'match' },
+  { attr: 'amount', label: 'Amount', type: 'range' },
+  { attr: 'user.username', label: 'User', type: 'match' },
+  { attr: 'category.name', label: 'Category', type: 'match' },
 ];
 
 const Analytics = ({
   expenses,
   expensesEvolution,
-  expensesByCategory
+  expensesByCategory,
+  onChangeFilter,
+  filteredExpenses
 }) => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
@@ -56,18 +64,18 @@ const Analytics = ({
         <div className={styles.title}>
           <i className="fa fa-fw fa-credit-card" /> Latest expenses
         </div>
-        <DataFilter />
-        <DataTable columns={expensesColumns} entries={reverseArray(expenses)} />
+        <DataFilter filters={expensesFilters} onChange={onChangeFilter} />
+        <DataTable columns={expensesColumns} entries={reverseArray(filteredExpenses)} />
       </div>
     </div>
   </main>
 );
 
 const mapStateToProps = state => {
-  //const expenses = getExpensesInRange(state.expenses.entities);
-  const expenses = state.expenses.entities;
+  const expenses = getExpensesInRange(state.expenses.entities);
   const users = state.users.entities;
   const categories = state.categories.entities;
+  const filteredExpenses = state.analytics.filter(expenses);
 
   return {
     expenses: expenses.map(e => {
@@ -75,10 +83,19 @@ const mapStateToProps = state => {
       e = populateBelongsTo('category', e, categories, 'category_id');
       return e;
     }),
+    filteredExpenses,
     expensesEvolution: calcExpensesEvolution(expenses),
     expensesByCategory: calcExpensesByCategory(expenses)
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onChangeFilter: filter => {
+      dispatch(setAnalyticsFilter(filter));
+    }
+  };
+};
 
-export default connect(mapStateToProps)(Analytics);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Analytics);
