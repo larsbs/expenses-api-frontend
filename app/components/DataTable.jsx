@@ -19,6 +19,10 @@ class DataTable extends React.Component {
     currentPage: 1
   };
 
+  componentDidMount() {
+    this._totalPages = Math.ceil(this.props.entries.length / this.state.entriesPerPage);
+  }
+
   componentDidUpdate() {
     this._totalPages = Math.ceil(this.props.entries.length / this.state.entriesPerPage);
   }
@@ -40,7 +44,7 @@ class DataTable extends React.Component {
               <option value="30">30</option>
               <option value="50">50</option>
             </select>
-            entries per page
+            entries per page ({this._totalPages} pages in total)
           </div>
           <div className={styles.shownItemsCount}>
             Showing {firstShownEntry} to {lastShownEntry} of {entries.length} entries
@@ -123,6 +127,7 @@ class DataTable extends React.Component {
 
   _handleOnClickNext() {
     if (this.state.currentPage < this._totalPages) {
+      console.log('HANDLE NEX');
       this.setState({ currentPage: this.state.currentPage + 1 });
     }
   }
