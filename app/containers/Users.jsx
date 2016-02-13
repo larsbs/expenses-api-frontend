@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { populateHasMany } from '../utils/populate';
-import { setUsersFilter, openAddUserModal, closeAddUserModal } from '../actions/users';
+import {
+  setUsersFilter,
+  openAddUserModal,
+  closeAddUserModal,
+  addUser,
+} from '../actions/users';
 
 import Header from '../components/Header';
 import DataFilter from '../components/DataFilter';
@@ -35,7 +40,8 @@ const Users = ({
   isModalOpen,
   onChangeFilter,
   onClickAddUser,
-  onCloseModal
+  onCloseModal,
+  onAddUser
 }) => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
@@ -49,7 +55,7 @@ const Users = ({
         <DataTable columns={usersColumns} entries={filteredUsers} />
       </div>
     </div>
-    <AddUserModal isModalOpen={isModalOpen} onCloseModal={onCloseModal} />
+    <AddUserModal isModalOpen={isModalOpen} onCloseModal={onCloseModal} onAddUser={onAddUser} />
   </main>
 );
 
@@ -77,6 +83,9 @@ const mapDispatchToProps = dispatch => {
     },
     onCloseModal: () => {
       dispatch(closeAddUserModal());
+    },
+    onAddUser: username => {
+      dispatch(addUser(username));
     }
   };
 };

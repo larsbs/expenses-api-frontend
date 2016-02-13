@@ -18,7 +18,12 @@ export default function users(state = initialState, action) {
           entities: action.payload.users
         });
       case UsersActions.ADD_USER:
-        return state;
+        return Object.assign({}, state, {
+          entities: [
+            ...state.entities,
+            action.payload.user
+          ]
+        });
       case UsersActions.UPDATE_USER:
         return state;
       case UsersActions.DELETE_USER:
