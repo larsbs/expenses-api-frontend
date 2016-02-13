@@ -1,0 +1,42 @@
+//------------------------
+// FORMS
+//
+// Author: Lorenzo Ruiz
+//------------------------
+
+@import './variables';
+@import './colors';
+
+
+:local(.formGroup) {
+}
+
+:local(.formLabel) {
+  width: 100%;
+  display: inline-block;
+  color: lighten(@dark-gray, 10%);
+  margin-bottom: 7px;
+}
+
+:local(.inputField) {
+  width: 100%;
+  height: 34px;
+  display: block;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: @dark-gray;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: @border-radius-default;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+}
+
+:local(.button) {
+  composes: button from '!less!./buttons.less';
+  min-width: 100px;
+}
+
+:local(.submitButton) {
+  composes: button;
+  composes: primary from '!less!./buttons.less';
+}

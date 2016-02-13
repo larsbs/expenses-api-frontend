@@ -65,8 +65,9 @@ class DataFilter extends React.Component {
           <div className={styles.filters}>
             {filters.map((filter, i) => (
               <div className={styles.formGroup} key={i}>
-                <label>{filter.label}</label>
+                <label className={styles.filterLabel}>{filter.label}</label>
                 <input
+                  className={styles.filterInput}
                   defaultValue={filter.value}
                   onChange={this._handleOnChangeFilter.bind(this)}
                   ref={ref => this._filterInputs[i] = ref }/>

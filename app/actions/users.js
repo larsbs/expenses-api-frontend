@@ -56,3 +56,21 @@ export function deleteUser() {
     type: DELETE_USER
   };
 }
+
+
+export const OPEN_ADD_USER_MODAL = 'OPEN_ADD_USER_MODAL';
+
+export function openAddUserModal() {
+  return {
+    type: OPEN_ADD_USER_MODAL
+  };
+}
+
+
+export const CLOSE_ADD_USER_MODAL = 'CLOSE_ADD_USER_MODAL';
+
+export function closeAddUserModal() {
+  return {
+    type: CLOSE_ADD_USER_MODAL
+  };
+}

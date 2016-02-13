@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { populateHasMany } from '../utils/populate';
-import { setUsersFilter } from '../actions/users';
+import { setUsersFilter, openAddUserModal, closeAddUserModal } from '../actions/users';
 
 import Header from '../components/Header';
 import DataFilter from '../components/DataFilter';
 import DataTable from '../components/DataTable';
+import AddUserModal from '../components/AddUserModal';
 
 import styles from '../styles/containers/users.less';
 import headerStyles from '../styles/components/header.less';
@@ -31,11 +32,16 @@ const usersFilters = [
 
 const Users = ({
   filteredUsers,
-  onChangeFilter
+  isModalOpen,
+  onChangeFilter,
+  onClickAddUser,
+  onCloseModal
 }) => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
-      <button className={headerStyles.button}><i className="fa fa-fw fa-plus" /> Add User</button>
+      <button className={headerStyles.button} onClick={onClickAddUser}>
+        <i className="fa fa-fw fa-plus" /> Add User
+      </button>
     </Header>
     <div classname={styles.usersContent}>
       <div className={styles.container}>
@@ -43,6 +49,7 @@ const Users = ({
         <DataTable columns={usersColumns} entries={filteredUsers} />
       </div>
     </div>
+    <AddUserModal isModalOpen={isModalOpen} onCloseModal={onCloseModal} />
   </main>
 );
 
@@ -55,7 +62,8 @@ const mapStateToProps = state => {
   });
   const filteredUsers = state.users.filter(users);
   return {
-    filteredUsers
+    filteredUsers,
+    isModalOpen: state.users.isModalOpen
   };
 };
 
@@ -63,6 +71,12 @@ const mapDispatchToProps = dispatch => {
   return {
     onChangeFilter: filter => {
       dispatch(setUsersFilter(filter));
+    },
+    onClickAddUser: () => {
+      dispatch(openAddUserModal());
+    },
+    onCloseModal: () => {
+      dispatch(closeAddUserModal());
     }
   };
 };

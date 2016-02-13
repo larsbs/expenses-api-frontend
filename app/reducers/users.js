@@ -3,7 +3,8 @@ import * as UsersActions from '../actions/users';
 
 const initialState = {
   entities: [],
-  filter: x => x
+  filter: x => x,
+  isModalOpen: false
 };
 
 export default function users(state = initialState, action) {
@@ -22,6 +23,14 @@ export default function users(state = initialState, action) {
         return state;
       case UsersActions.DELETE_USER:
         return state;
+      case UsersActions.OPEN_ADD_USER_MODAL:
+        return Object.assign({}, state, {
+          isModalOpen: true
+        });
+      case UsersActions.CLOSE_ADD_USER_MODAL:
+        return Object.assign({}, state, {
+          isModalOpen: false
+        });
       default:
         return state;
   }

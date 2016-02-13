@@ -1,0 +1,46 @@
+//------------------------
+// MODAL
+//
+// Author: Lorenzo Ruiz
+//------------------------
+
+@import './colors';
+
+
+:local(.modal) {
+  padding: 10px;
+}
+
+:local(.header) {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+:local(.title) {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+:local(.close) {
+  color: @gray;
+  cursor: pointer;
+
+  &:hover {
+    color: @dark-gray;
+  }
+}
+
+:local(.body) {
+}
+
+:local(.footer) {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin-left: 10px;
+  }
+}
