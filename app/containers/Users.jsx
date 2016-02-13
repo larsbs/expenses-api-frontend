@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { populateHasMany } from '../utils/populate';
+import { setUsersFilter } from '../actions/users';
 
 import Header from '../components/Header';
 import DataFilter from '../components/DataFilter';
@@ -13,17 +17,55 @@ const breadcrumbs = [{
   title: 'Users'
 }];
 
-const Users = () => (
+const usersColumns = [
+  { attr: 'id', label: 'Id' },
+  { attr: 'username', label: 'Username' },
+  { attr: 'expenses.length', label: 'Expenses' },
+];
+
+const usersFilters = [
+  { attr: 'id', label: 'Id', type: 'range' },
+  { attr: 'username', label: 'Username', type: 'match' },
+  { attr: 'expenses.length', label: 'Expenses', type: 'range' },
+];
+
+const Users = ({
+  filteredUsers,
+  onChangeFilter
+}) => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
       <button className={headerStyles.button}><i className="fa fa-fw fa-plus" /> Add User</button>
     </Header>
-    <div className={styles.container}>
-      <DataFilter />
-      <DataTable />
+    <div classname={styles.usersContent}>
+      <div className={styles.container}>
+        <DataFilter filters={usersFilters} onChange={onChangeFilter} />
+        <DataTable columns={usersColumns} entries={filteredUsers} />
+      </div>
     </div>
   </main>
 );
 
+const mapStateToProps = state => {
+  const expenses = state.expenses.entities;
+  const users = state.users.entities.map(u => {
+    return Object.assign({}, u, {
+      ...populateHasMany('expenses', u, expenses, 'user_id')
+    });
+  });
+  const filteredUsers = state.users.filter(users);
+  return {
+    filteredUsers
+  };
+};
 
-export default Users;
+const mapDispatchToProps = dispatch => {
+  return {
+    onChangeFilter: filter => {
+      dispatch(setUsersFilter(filter));
+    }
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Users);

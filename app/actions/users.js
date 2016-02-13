@@ -1,3 +1,15 @@
+export const SET_USERS_FILTER = 'SET_USERS_FILTER';
+
+export function setUsersFilter(filter) {
+  return {
+    type: SET_USERS_FILTER,
+    payload: {
+      filter
+    }
+  };
+}
+
+
 export const LOAD_USERS = 'LOAD_USERS';
 
 export function loadUsers() {
