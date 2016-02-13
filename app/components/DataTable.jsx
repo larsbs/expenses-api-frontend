@@ -127,7 +127,6 @@ class DataTable extends React.Component {
 
   _handleOnClickNext() {
     if (this.state.currentPage < this._totalPages) {
-      console.log('HANDLE NEX');
       this.setState({ currentPage: this.state.currentPage + 1 });
     }
   }

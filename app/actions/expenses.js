@@ -1,3 +1,15 @@
+export const SET_EXPENSES_FILTER = 'SET_EXPENSES_FILTER';
+
+export function setExpensesFilter(filter) {
+  return {
+    type: SET_EXPENSES_FILTER,
+    payload: {
+      filter
+    }
+  };
+}
+
+
 export const LOAD_EXPENSES = 'LOAD_EXPENSES';
 
 export function loadExpenses() {
