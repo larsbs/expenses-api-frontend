@@ -31,7 +31,6 @@ const expensesColumns = [
 ];
 
 const expensesFilters = [
-  { attr: 'created_at', label: 'Date', type: 'date-range' },
   { attr: 'note', label: 'Note', type: 'match' },
   { attr: 'amount', label: 'Amount', type: 'range' },
   { attr: 'user.username', label: 'User', type: 'match' },
