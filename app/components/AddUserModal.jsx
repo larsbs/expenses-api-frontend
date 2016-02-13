@@ -3,7 +3,6 @@ import Modal from 'react-modal';
 
 import formStyles from '../styles/forms.less';
 import modalStyles from '../styles/modal.less';
-import styles from '../styles/components/add-user-modal.less';
 
 
 const defaultModalStyle = {
