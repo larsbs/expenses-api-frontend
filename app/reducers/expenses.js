@@ -3,7 +3,8 @@ import * as ExpensesActions from '../actions/expenses';
 
 const initialState = {
   entities: [],
-  filter: x => x
+  filter: x => x,
+  isModalOpen: false,
 };
 
 export default function expenses(state = initialState, action) {
@@ -22,6 +23,14 @@ export default function expenses(state = initialState, action) {
         return state;
       case ExpensesActions.DELETE_EXPENSE:
         return state;
+      case ExpensesActions.OPEN_ADD_EXPENSE_MODAL:
+        return Object.assign({}, state, {
+          isModalOpen: true
+        });
+      case ExpensesActions.CLOSE_ADD_EXPENSE_MODAL:
+        return Object.assign({}, state, {
+          isModalOpen: false
+        });
       default:
         return state;
   }

@@ -56,3 +56,21 @@ export function deleteCategory() {
     type: DELETE_CATEGORY
   };
 }
+
+
+export const OPEN_ADD_CATEGORY_MODAL = 'OPEN_ADD_CATEGORY_MODAL';
+
+export function openAddCategoryModal() {
+  return {
+    type: OPEN_ADD_CATEGORY_MODAL
+  };
+}
+
+
+export const CLOSE_ADD_CATEGORY_MODAL = 'CLOSE_ADD_CATEGORY_MODAL';
+
+export function closeAddCategoryModal() {
+  return {
+    type: CLOSE_ADD_CATEGORY_MODAL
+  };
+}

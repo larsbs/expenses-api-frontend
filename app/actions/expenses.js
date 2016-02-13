@@ -56,3 +56,21 @@ export function deleteExpense() {
     type: DELETE_EXPENSE
   };
 }
+
+
+export const OPEN_ADD_EXPENSE_MODAL = 'OPEN_ADD_EXPENSE_MODAL';
+
+export function openAddExpenseModal() {
+  return {
+    type: OPEN_ADD_EXPENSE_MODAL
+  };
+}
+
+
+export const CLOSE_ADD_EXPENSE_MODAL = 'CLOSE_ADD_EXPENSE_MODAL';
+
+export function closeAddExpenseModal() {
+  return {
+    type: CLOSE_ADD_EXPENSE_MODAL
+  };
+}

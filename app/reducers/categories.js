@@ -3,7 +3,8 @@ import * as CategoriesActions from '../actions/categories';
 
 const initialState = {
   entities: [],
-  filter: x => x
+  filter: x => x,
+  isModalOpen: false,
 };
 
 export default function categories(state = initialState, action) {
@@ -22,6 +23,14 @@ export default function categories(state = initialState, action) {
         return state;
       case CategoriesActions.DELETE_CATEGORY:
         return state;
+      case CategoriesActions.OPEN_ADD_CATEGORY_MODAL:
+        return Object.assign({}, state, {
+          isModalOpen: true
+        });
+      case CategoriesActions.CLOSE_ADD_CATEGORY_MODAL:
+        return Object.assign({}, state, {
+          isModalOpen: false
+        });
       default:
         return state;
   }

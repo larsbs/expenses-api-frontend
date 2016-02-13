@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { populateHasMany } from '../utils/populate';
-import { setCategoriesFilter } from '../actions/categories';
+import { setCategoriesFilter, openAddCategoryModal, closeAddCategoryModal } from '../actions/categories';
 import { capitalize } from '../utils';
 
 import Header from '../components/Header';
 import DataFilter from '../components/DataFilter';
 import DataTable from '../components/DataTable';
+import AddCategoryModal from '../components/AddCategoryModal';
 
 import styles from '../styles/containers/expenses.less';
 import headerStyles from '../styles/components/header.less';
@@ -32,16 +33,22 @@ const categoriesFilters = [
 
 const Categories = ({
   filteredCategories,
+  isModalOpen,
+  onCloseModal,
+  onClickAddCategory,
   onChangeFilter
 }) => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
-      <button className={headerStyles.button}><i className="fa fa-fw fa-plus" /> Add Category</button>
+      <button className={headerStyles.button} onClick={onClickAddCategory}>
+        <i className="fa fa-fw fa-plus" /> Add Category
+      </button>
     </Header>
     <div className={styles.container}>
       <DataFilter filters={categoriesFilters} onChange={onChangeFilter} />
       <DataTable columns={categoriesColumns} entries={filteredCategories} />
     </div>
+    <AddCategoryModal isModalOpen={isModalOpen} onCloseModal={onCloseModal} />
   </main>
 );
 
@@ -54,7 +61,8 @@ const mapStateToProps = state => {
   });
   const filteredCategories = state.categories.filter(categories);
   return {
-    filteredCategories
+    filteredCategories,
+    isModalOpen: state.categories.isModalOpen
   };
 };
 
@@ -62,6 +70,12 @@ const mapDispatchToProps = dispatch => {
   return {
     onChangeFilter: filter => {
       dispatch(setCategoriesFilter(filter));
+    },
+    onClickAddCategory: () => {
+      dispatch(openAddCategoryModal());
+    },
+    onCloseModal: () => {
+      dispatch(closeAddCategoryModal());
     }
   };
 };
