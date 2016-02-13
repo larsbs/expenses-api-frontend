@@ -61,7 +61,7 @@ const Analytics = ({
         </div>
         <LatestActivity expenses={expenses} />
         <div className={styles.title}>
-          <i className="fa fa-fw fa-credit-card" /> Latest expenses
+          <i className="fa fa-fw fa-credit-card" /> Expenses In Range
         </div>
         <DataFilter filters={expensesFilters} onChange={onChangeFilter} />
         <DataTable columns={expensesColumns} entries={reverseArray(filteredExpenses)} />
