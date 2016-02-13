@@ -1,4 +1,9 @@
 import React from 'react';
+import moment from 'moment';
+import { connect } from 'react-redux';
+
+import { populateBelongsTo } from '../utils/populate';
+import { capitalize, reverseArray } from '../utils';
 
 import Header from '../components/Header';
 import DataFilter from '../components/DataFilter';
@@ -13,7 +18,8 @@ const breadcrumbs = [{
   title: 'Expenses'
 }];
 
-const Expenses = () => (
+const Expenses = ({
+}) => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
       <button className={headerStyles.button}><i className="fa fa-fw fa-plus" /> Add Expense</button>
@@ -25,5 +31,15 @@ const Expenses = () => (
   </main>
 );
 
+const mapStateToProps = state => {
+  return {
+  };
+};
 
-export default Expenses;
+const mapDispatchToProps = dispatch => {
+  return {
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Expenses);

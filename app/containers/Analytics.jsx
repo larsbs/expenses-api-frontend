@@ -70,18 +70,21 @@ const Analytics = ({
   </main>
 );
 
+
 const mapStateToProps = state => {
-  const expenses = getExpensesInRange(state.expenses.entities);
   const users = state.users.entities;
   const categories = state.categories.entities;
+  const expenses = getExpensesInRange(state.expenses.entities).map(e => {
+    return Object.assign({}, e, {
+      ...populateBelongsTo('user', e, users, 'user_id')
+    }, {
+      ...populateBelongsTo('category', e, categories, 'category_id')
+    });
+  });
   const filteredExpenses = state.analytics.filter(expenses);
 
   return {
-    expenses: expenses.map(e => {
-      e = populateBelongsTo('user', e, users, 'user_id');
-      e = populateBelongsTo('category', e, categories, 'category_id');
-      return e;
-    }),
+    expenses,
     filteredExpenses,
     expensesEvolution: calcExpensesEvolution(expenses),
     expensesByCategory: calcExpensesByCategory(expenses)
