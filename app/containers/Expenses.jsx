@@ -4,7 +4,12 @@ import { connect } from 'react-redux';
 
 import { populateBelongsTo } from '../utils/populate';
 import { capitalize, reverseArray } from '../utils';
-import { setExpensesFilter, openAddExpenseModal, closeAddExpenseModal } from '../actions/expenses';
+import {
+  setExpensesFilter,
+  openAddExpenseModal,
+  closeAddExpenseModal,
+  addExpense
+} from '../actions/expenses';
 
 import Header from '../components/Header';
 import DataFilter from '../components/DataFilter';
@@ -21,6 +26,7 @@ const breadcrumbs = [{
 }];
 
 const expensesColumns = [
+  { attr: 'id', label: 'Id', progress: true },
   { attr: 'created_at', label: 'Date', formatter: value => moment(value).format('DD/MM/YYYY HH:MM A') },
   { attr: 'note', label: 'Note' },
   { attr: 'amount', label: 'Amount', formatter: value => value + '€' },
@@ -38,11 +44,14 @@ const expensesFilters = [
 ];
 
 const Expenses = ({
+  users,
+  categories,
   filteredExpenses,
   onChangeFilter,
   isModalOpen,
   onClickAddExpense,
-  onCloseModal
+  onCloseModal,
+  onAddExpense,
 }) => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
@@ -56,7 +65,12 @@ const Expenses = ({
         <DataTable columns={expensesColumns} entries={reverseArray(filteredExpenses)} />
       </div>
     </div>
-    <AddExpenseModal isModalOpen={isModalOpen} onCloseModal={onCloseModal} />
+    <AddExpenseModal
+      isModalOpen={isModalOpen}
+      onCloseModal={onCloseModal}
+      onAddExpense={onAddExpense}
+      users={users}
+      categories={categories} />
   </main>
 );
 
@@ -73,6 +87,8 @@ const mapStateToProps = state => {
   const filteredExpenses = state.expenses.filter(expenses);
 
   return {
+    users,
+    categories,
     filteredExpenses,
     isModalOpen: state.expenses.isModalOpen
   };
@@ -88,6 +104,9 @@ const mapDispatchToProps = dispatch => {
     },
     onCloseModal: () => {
       dispatch(closeAddExpenseModal());
+    },
+    onAddExpense: (note, amount, category, user) => {
+      dispatch(addExpense(note, amount, category, user));
     }
   };
 };

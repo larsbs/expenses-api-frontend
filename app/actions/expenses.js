@@ -1,3 +1,6 @@
+import { createFakeId } from '../utils';
+
+
 export const SET_EXPENSES_FILTER = 'SET_EXPENSES_FILTER';
 
 export function setExpensesFilter(filter) {
@@ -33,9 +36,42 @@ export function receiveExpenses(expenses) {
 
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 
-export function addExpense() {
+export function addExpense(note, amount, category, user) {
   return {
-    type: ADD_EXPENSE
+    type: ADD_EXPENSE,
+    payload: {
+      id: createFakeId(),
+      note,
+      amount,
+      category,
+      user
+    }
+  };
+}
+
+
+export const ADD_EXPENSE_SUCCESS = 'ADD_EXPENSE_SUCCESS';
+
+export function addExpenseSuccess(fakeId, expense) {
+  return {
+    type: ADD_EXPENSE_SUCCESS,
+    payload: {
+      fakeId,
+      expense
+    }
+  };
+}
+
+
+export const ADD_EXPENSE_FAILED = 'ADD_EXPENSE_FAILED';
+
+export function addExpenseFailed(err, fakeId) {
+  return {
+    type: ADD_EXPENSE_FAILED,
+    payload: {
+      fakeId,
+      err
+    }
   };
 }
 

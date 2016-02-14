@@ -18,7 +18,27 @@ export default function expenses(state = initialState, action) {
           entities: action.payload.expenses
         });
       case ExpensesActions.ADD_EXPENSE:
-        return state;
+        return Object.assign({}, state, {
+          entities: [
+            action.payload.expense,
+            ...state.entities
+          ]
+        });
+      case ExpensesActions.ADD_EXPENSE_SUCCESS:
+        return Object.assign({}, state, {
+          entities: state.entities.map(e => {
+            if (e.loading && e.id === action.payload.fakeId) {
+              return action.payload.expense;
+            }
+            return e;
+          })
+        });
+      case ExpensesActions.ADD_EXPENSE_FAILED:
+        return Object.assign({}, state, {
+          entities: state.entities.filter(e => {
+            return ! e.loading && e.id !== action.payload.fakeId;
+          })
+        });
       case ExpensesActions.UPDATE_EXPENSE:
         return state;
       case ExpensesActions.DELETE_EXPENSE:
