@@ -34,8 +34,6 @@ const defaultModalStyle = {
 class SelectDateRangeModal extends React.Component {
 
   state = {
-    hasError: false,
-    errorMsg: '',
     dateTo: moment(this.props.initialDateTo),
     dateFrom: moment(this.props.initialDateFrom)
   };
@@ -74,7 +72,6 @@ class SelectDateRangeModal extends React.Component {
                       <i className="fa fa-fw fa-calendar" />
                     </div>
                   </div>
-                  <span className={formStyles.errorMessage}>{this.state.errorMsg}</span>
                 </div>
                 <div className={formStyles.formGroup}>
                   <label className={formStyles.formLabel}>To</label>
@@ -95,12 +92,11 @@ class SelectDateRangeModal extends React.Component {
                       <i className="fa fa-fw fa-calendar" />
                     </div>
                   </div>
-                  <span className={formStyles.errorMessage}>{this.state.errorMsg}</span>
                 </div>
               </form>
             </div>
             <div className={modalStyles.footer}>
-              <button className={formStyles.submitButton} onClick={this._handleOnClickSubmit.bind(this)}>Add</button>
+              <button className={formStyles.submitButton} onClick={this._handleOnClickSubmit.bind(this)}>Select</button>
               <button className={formStyles.button} onClick={onCloseModal}>Cancel</button>
             </div>
           </div>
@@ -128,19 +124,12 @@ class SelectDateRangeModal extends React.Component {
     this.setState({ dateTo: dateTo });
   }
 
-  _removeErrors() {
-    this.setState({ hasError: false });
-  }
-
   _handleOnClickSubmit(event) {
     event.preventDefault();
-    //const { name, error } = validateCategoryName(this.refs.name.value);
-    //this.setState({ errorMsg: error || '', hasError: !!error });
-
-    //if ( ! error) {
-      //this.props.onAddCategory(name);
-      //this.props.onCloseModal();
-    //}
+    const dateFrom = moment(this.state.dateFrom);
+    const dateTo = moment(this.state.dateTo);
+    this.props.onDateRangeSelected(dateFrom, dateTo);
+    this.props.onCloseModal();
   }
 
 }

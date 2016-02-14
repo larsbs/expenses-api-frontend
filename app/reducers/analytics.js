@@ -27,7 +27,12 @@ export default function analytics(state = initialState, action) {
           isModalOpen: false
         });
       case AnalyticsActions.CHANGE_DATE_RANGE:
+        const newDateRange = Object.assign({}, state.dateRange, {
+          from: moment(action.payload.from),
+          to: moment(action.payload.to)
+        });
         return Object.assign({}, state, {
+          dateRange: newDateRange
         });
       default:
         return state;
