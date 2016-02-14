@@ -1,14 +1,31 @@
 import faker from 'faker';
+import pluralize from 'pluralize';
 
 
-const BASE_URL = 'http://expenses-api.herokuapp.com/api/v1/';
+//const BASE_URL = '//expenses-api.herokuapp.com/api/v1/';
+const BASE_URL = '//localhost:4000/api/v1/';
 
 
 function fetchEntity(entity) {
   const request = new Request(BASE_URL + entity);
   return fetch(request)
     .then(response => response.json())
-    .then(json => json[entity]);
+    .then(json => json[entity] );
+}
+
+
+function createEntity(entity, properties) {
+  const request = new Request(BASE_URL + pluralize(entity), {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    mode: 'cors',
+    body: JSON.stringify(properties)
+  });
+  return fetch(request)
+    .then(response => response.json())
+    .then(json => json[entity] );
 }
 
 
@@ -49,17 +66,5 @@ export function fetchAll() {
 
 
 export function createUser({ username }) {
-  const request = new Request(BASE_URL + 'users' + 'asdf', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ username })
-  });
-  //return fetch(request)
-    //.then(response => response.json())
-    //.then(json => json[entity]);
-  return new Promise(resolve => {
-    setTimeout(resolve.bind(undefined, { user: null, err: true }), 5000);
-  });
+  return createEntity('user', { username });
 }

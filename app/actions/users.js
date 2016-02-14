@@ -65,12 +65,12 @@ export function addUserSuccess(fakeId, user) {
 
 export const ADD_USER_FAILED = 'ADD_USER_FAILED';
 
-export function addUserFailed(err, fakeUser) {
+export function addUserFailed(err, fakeId) {
   return {
     type: ADD_USER_FAILED,
     payload: {
       err,
-      fakeUser
+      fakeId
     }
   };
 }

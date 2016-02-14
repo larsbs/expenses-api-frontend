@@ -10,12 +10,13 @@ import { showLoading, finishLoading } from '../actions/application';
 function* watchAddUser() {
   while (true) {
     const { payload } = yield take(ADD_USER);
-    const { user, err } = yield call(createUser, payload.user);
-    if (err) {
-      yield put(addUserFailed(err, payload.user));
+    try {
+      const user = yield call(createUser, payload.user);
+      console.log(payload);
+      yield put(addUserSuccess(payload.user.id, user));
     }
-    else {
-      yield put(addUserSuccess(payload.user.fakeId, user));
+    catch (err) {
+      yield put(addUserFailed(err, payload.user.id));
     }
   }
 }
