@@ -94,7 +94,9 @@ const Analytics = ({
 const mapStateToProps = state => {
   const users = state.users.entities;
   const categories = state.categories.entities;
-  const expenses = getExpensesInRange(state.expenses.entities).map(e => {
+  const dateFrom = state.analytics.dateRange.from;
+  const dateTo = state.analytics.dateRange.to;
+  const expenses = getExpensesInRange(state.expenses.entities, dateFrom, dateTo).map(e => {
     return Object.assign({}, e, {
       ...populateBelongsTo('user', e, users, 'user_id')
     }, {
@@ -109,8 +111,8 @@ const mapStateToProps = state => {
     expensesEvolution: calcExpensesEvolution(expenses),
     expensesByCategory: calcExpensesByCategory(expenses),
     isModalOpen: state.analytics.isModalOpen,
-    dateFrom: state.analytics.dateRange.from,
-    dateTo: state.analytics.dateRange.to
+    dateFrom,
+    dateTo,
   };
 };
 

@@ -7,7 +7,14 @@ import styles from '../styles/components/chart.less';
 class Chart extends React.Component {
 
   componentDidMount() {
-    HighCharts.chart(this.chartContext, this.props.data);
+    this._chart = new HighCharts.chart(this.chartContext, this.props.data);
+  }
+
+  componentDidUpdate() {
+    for (const i in this._chart.series) {
+      console.log(this.props.data.series[i]);
+      this._chart.series[i].setData(this.props.data.series[i].data, true);
+    }
   }
 
   render() {
