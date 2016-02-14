@@ -5,13 +5,19 @@ import moment from 'moment';
 import { getExpensesInRange, reverseArray, capitalize } from '../utils';
 import { populateBelongsTo } from '../utils/populate';
 import { calcExpensesEvolution, calcExpensesByCategory } from '../utils/charts';
-import { setAnalyticsFilter } from '../actions/analytics';
+import {
+  setAnalyticsFilter,
+  openSelectDateRangeModal,
+  closeSelectDateRangeModal,
+  changeDateRange,
+} from '../actions/analytics';
 
 import Header from '../components/Header';
 import LatestActivity from '../components/LatestActivity';
 import Chart from '../components/Chart';
 import DataFilter from '../components/DataFilter';
 import DataTable from '../components/DataTable';
+import SelectDateRangeModal from '../components/SelectDateRangeModal';
 
 import styles from '../styles/containers/analytics.less';
 import headerStyles from '../styles/components/header.less';
@@ -42,11 +48,17 @@ const Analytics = ({
   expensesEvolution,
   expensesByCategory,
   onChangeFilter,
-  filteredExpenses
+  filteredExpenses,
+  isModalOpen,
+  onCloseModal,
+  onClickSelectDateRange,
+  onDateRangeSelected,
 }) => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
-      <button className={headerStyles.button}><i className="fa fa-fw fa-calendar"/> Select Date Range</button>
+      <button className={headerStyles.button} onClick={onClickSelectDateRange}>
+        <i className="fa fa-fw fa-calendar"/> Select Date Range
+      </button>
     </Header>
     <div className={styles.analyticsContent}>
       <div className={styles.container}>
@@ -67,6 +79,7 @@ const Analytics = ({
         <DataTable columns={expensesColumns} entries={reverseArray(filteredExpenses)} />
       </div>
     </div>
+    <SelectDateRangeModal isModalOpen={isModalOpen} onCloseModal={onCloseModal} onDateRangeSelected={onDateRangeSelected} />
   </main>
 );
 
@@ -87,7 +100,8 @@ const mapStateToProps = state => {
     expenses,
     filteredExpenses,
     expensesEvolution: calcExpensesEvolution(expenses),
-    expensesByCategory: calcExpensesByCategory(expenses)
+    expensesByCategory: calcExpensesByCategory(expenses),
+    isModalOpen: state.analytics.isModalOpen
   };
 };
 
@@ -95,6 +109,14 @@ const mapDispatchToProps = dispatch => {
   return {
     onChangeFilter: filter => {
       dispatch(setAnalyticsFilter(filter));
+    },
+    onClickSelectDateRange: () => {
+      dispatch(openSelectDateRangeModal());
+    },
+    onCloseModal: () => {
+      dispatch(closeSelectDateRangeModal());
+    },
+    onDateRangeSelected: () => {
     }
   };
 };

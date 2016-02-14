@@ -2,7 +2,12 @@ import * as AnalyticsActions from '../actions/analytics';
 
 
 const initialState = {
-  filter: x => x
+  filter: x => x,
+  isModalOpen: false,
+  dateRange: {
+    from: Date.now(),
+    to: Date.now()
+  }
 };
 
 
@@ -11,6 +16,17 @@ export default function analytics(state = initialState, action) {
       case AnalyticsActions.SET_ANALYTICS_FILTER:
         return Object.assign({}, state, {
           filter: action.payload.filter
+        });
+      case AnalyticsActions.OPEN_SELECT_DATE_RANGE_MODAL:
+        return Object.assign({}, state, {
+          isModalOpen: true
+        });
+      case AnalyticsActions.CLOSE_SELECT_DATE_RANGE_MODAL:
+        return Object.assign({}, state, {
+          isModalOpen: false
+        });
+      case AnalyticsActions.CHANGE_DATE_RANGE:
+        return Object.assign({}, state, {
         });
       default:
         return state;

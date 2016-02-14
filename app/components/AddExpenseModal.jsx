@@ -61,7 +61,8 @@ class AddExpenseModal extends React.Component {
                     ref="amount"
                     placeholder="Write the amount of the expense"
                     className={this.state.amountErrorMsg ? formStyles.errorInputField : formStyles.inputField}
-                    type="text" />
+                    type="text"
+                    onFocus={this._removeErrors.bind(this)} />
                   <div className={formStyles.inputFieldSymbol}>
                     <i className="fa fa-fw fa-eur" />
                   </div>
