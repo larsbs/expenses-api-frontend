@@ -73,3 +73,8 @@ export function createUser({ username }) {
 export function createCategory({ name }) {
   return createEntity('category', { name });
 }
+
+
+export function createExpense({ note, amount, category_id, user_id }) {
+  return createEntity('expense', { note, amount, category_id, user_id });
+}

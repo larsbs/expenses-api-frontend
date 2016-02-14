@@ -92,8 +92,6 @@ class DataTable extends React.Component {
   }
 
   _renderEntryCell(entry, column, i) {
-    const entryAttr = column.attr.split('.').reduce((o, i) => o[i], entry);
-    const formatter = column.formatter || nullFormatter;
     const isProgressColumn = column.progress;
     const isLoading = entry.loading;
 
@@ -105,6 +103,8 @@ class DataTable extends React.Component {
       );
     }
 
+    const entryAttr = column.attr.split('.').reduce((o, i) => o[i], entry);
+    const formatter = column.formatter || nullFormatter;
     return (
       <td key={entry.id + '-' + i}>
         {formatter(entryAttr)}

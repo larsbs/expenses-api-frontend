@@ -30,11 +30,12 @@ const expensesColumns = [
   { attr: 'created_at', label: 'Date', formatter: value => moment(value).format('DD/MM/YYYY HH:MM A') },
   { attr: 'note', label: 'Note' },
   { attr: 'amount', label: 'Amount', formatter: value => value + '€' },
-  { attr: 'user.username', label: 'User' },
-  { attr: 'category.name', label: 'Category', formatter: value => capitalize(value) },
+  { attr: 'user.username', label: 'User', progress: true },
+  { attr: 'category.name', label: 'Category', progress: true, formatter: value => capitalize(value) },
 ];
 
 const expensesFilters = [
+  { attr: 'id', label: 'Id', type: 'range' },
   { attr: 'created_at', label: 'From', type: 'date-range-start-1' },
   { attr: 'created_at', label: 'To', type: 'date-range-end-2' },
   { attr: 'note', label: 'Note', type: 'match' },

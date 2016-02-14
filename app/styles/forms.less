@@ -68,6 +68,11 @@
   background: @light-red;
 }
 
+:local(.errorTextareaField) {
+  composes: textareaField;
+  composes: errorInputField;
+}
+
 :local(.errorMessage) {
   color: @red;
   font-size: 0.8em;

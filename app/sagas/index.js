@@ -1,10 +1,24 @@
 import { fork, call, put, take } from 'redux-saga';
 
-import { fetchAll, createUser, createCategory } from '../utils/api';
-import { receiveExpenses } from '../actions/expenses';
+import { fetchAll, createUser, createCategory, createExpense } from '../utils/api';
+import { receiveExpenses, ADD_EXPENSE, addExpenseSuccess, addExpenseFailed } from '../actions/expenses';
 import { receiveUsers, ADD_USER, addUserSuccess, addUserFailed } from '../actions/users';
 import { receiveCategories, ADD_CATEGORY, addCategorySuccess, addCategoryFailed } from '../actions/categories';
 import { showLoading, finishLoading } from '../actions/application';
+
+
+function* watchAddExpense() {
+  while (true) {
+    const { payload } = yield take(ADD_EXPENSE);
+    try {
+      const expense = yield call(createExpense, payload.expense);
+      yield put(addExpenseSuccess(payload.expense.id, expense));
+    }
+    catch (err) {
+      yield put(addExpenseFailed(err, payload.expense.id));
+    }
+  }
+}
 
 
 function* watchAddCategory() {
@@ -49,4 +63,5 @@ export default function* root(/* getState */) {
   yield fork(loadApp);
   yield fork(watchAddUser);
   yield fork(watchAddCategory);
+  yield fork(watchAddExpense);
 }

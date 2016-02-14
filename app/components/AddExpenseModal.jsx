@@ -53,26 +53,28 @@ class AddExpenseModal extends React.Component {
             <i className={modalStyles.close + ' fa fa-fw fa-times'} onClick={onCloseModal} />
           </div>
           <div className={modalStyles.body}>
-            <form>
+            <form onSubmit={this._handleOnClickSubmit.bind(this)}>
               <div className={formStyles.formGroup}>
                 <label className={formStyles.formLabel}>Amount</label>
                 <div className={formStyles.inputFieldWithSymbol}>
                   <input
                     ref="amount"
                     placeholder="Write the amount of the expense"
-                    className={formStyles.inputField}
+                    className={this.state.amountErrorMsg ? formStyles.errorInputField : formStyles.inputField}
                     type="text" />
                   <div className={formStyles.inputFieldSymbol}>
                     <i className="fa fa-fw fa-eur" />
                   </div>
                 </div>
+                <span className={formStyles.errorMessage}>{this.state.amountErrorMsg}</span>
               </div>
               <div className={formStyles.formGroup}>
                 <label className={formStyles.formLabel}>Note</label>
                 <textarea
                   ref="note"
                   placeholder="Write a note to remember the expense"
-                  className={formStyles.textareaField} />
+                  className={this.state.noteErrorMsg ? formStyles.errorTextareaField : formStyles.textareaField} />
+                <span className={formStyles.errorMessage}>{this.state.noteErrorMsg}</span>
               </div>
               <div className={formStyles.formGroup} style={col2Style}>
                 <label className={formStyles.formLabel}>Category</label>
@@ -93,7 +95,7 @@ class AddExpenseModal extends React.Component {
             </form>
           </div>
           <div className={modalStyles.footer}>
-            <button className={formStyles.submitButton}>Add</button>
+            <button className={formStyles.submitButton} onClick={this._handleOnClickSubmit.bind(this)}>Add</button>
             <button className={formStyles.button} onClick={onCloseModal}>Cancel</button>
           </div>
         </div>

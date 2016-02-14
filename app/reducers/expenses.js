@@ -20,8 +20,8 @@ export default function expenses(state = initialState, action) {
       case ExpensesActions.ADD_EXPENSE:
         return Object.assign({}, state, {
           entities: [
+            ...state.entities,
             action.payload.expense,
-            ...state.entities
           ]
         });
       case ExpensesActions.ADD_EXPENSE_SUCCESS:

@@ -40,11 +40,14 @@ export function addExpense(note, amount, category, user) {
   return {
     type: ADD_EXPENSE,
     payload: {
-      id: createFakeId(),
-      note,
-      amount,
-      category,
-      user
+      expense: {
+        id: createFakeId(),
+        note,
+        amount,
+        category_id: category,
+        user_id: user,
+        loading: true
+      }
     }
   };
 }

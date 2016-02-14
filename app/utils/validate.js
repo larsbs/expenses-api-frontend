@@ -20,3 +20,28 @@ export function validateCategoryName(name) {
     name
   };
 }
+
+
+export function validateExpenseNote(note) {
+  if ( ! note || note === '') {
+    return {
+      error: 'The note must not be empty'
+    };
+  }
+  return {
+    note
+  };
+}
+
+
+export function validateExpenseAmount(amount) {
+  amount = Number(amount);
+  if ( ! amount || isNaN(amount)) {
+    return {
+      error: 'Please, insert a valid amount'
+    };
+  }
+  return {
+    amount
+  };
+}
