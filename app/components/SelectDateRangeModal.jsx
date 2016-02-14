@@ -30,7 +30,9 @@ class SelectDateRangeModal extends React.Component {
 
   state = {
     hasError: false,
-    errorMsg: ''
+    errorMsg: '',
+    dateTo: this.props.initialDateTo,
+    dateFrom: this.props.initialDateFrom
   };
 
   render() {
@@ -50,6 +52,9 @@ class SelectDateRangeModal extends React.Component {
                 <div className={formStyles.inputFieldWithSymbol}>
                   <DatePicker
                     className={formStyles.inputField}
+                    selected={this.state.dateFrom}
+                    maxDate={this.state.dateTo.clone().subtract(1, 'day')}
+                    onChange={this._handleOnChangeDateFrom.bind(this)}
                     placeholderText="Click here to select a date" />
                   <div className={formStyles.inputFieldSymbol}>
                     <i className="fa fa-fw fa-calendar" />
@@ -62,6 +67,8 @@ class SelectDateRangeModal extends React.Component {
                 <div className={formStyles.inputFieldWithSymbol}>
                   <DatePicker
                     className={formStyles.inputField}
+                    selected={this.state.dateTo}
+                    onChange={this._handleOnChangeDateTo.bind(this)}
                     maxDate={moment()}
                     placeholderText="Click here to select a date" />
                   <div className={formStyles.inputFieldSymbol}>
@@ -79,6 +86,14 @@ class SelectDateRangeModal extends React.Component {
         </div>
       </Modal>
     );
+  }
+
+  _handleOnChangeDateFrom(date) {
+    this.setState({ dateFrom: date });
+  }
+
+  _handleOnChangeDateTo(date) {
+    this.setState({ dateTo: date });
   }
 
   _removeErrors() {

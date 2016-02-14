@@ -1,3 +1,4 @@
+import moment from 'moment';
 import * as AnalyticsActions from '../actions/analytics';
 
 
@@ -5,8 +6,8 @@ const initialState = {
   filter: x => x,
   isModalOpen: false,
   dateRange: {
-    from: Date.now(),
-    to: Date.now()
+    from: moment().subtract(1, 'month'),
+    to: moment()
   }
 };
 

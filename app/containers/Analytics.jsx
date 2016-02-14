@@ -49,6 +49,8 @@ const Analytics = ({
   expensesByCategory,
   onChangeFilter,
   filteredExpenses,
+  dateFrom,
+  dateTo,
   isModalOpen,
   onCloseModal,
   onClickSelectDateRange,
@@ -64,7 +66,7 @@ const Analytics = ({
       <div className={styles.container}>
         <div className={styles.analytics}>
           <div className={styles.dateRange}>
-            <i className="fa fa-fw fa-calendar" /> Jan 16, 2016 - Feb 14, 2016
+            <i className="fa fa-fw fa-calendar" /> {dateFrom.format('MMM DD, YYYY')} - {dateTo.format('MMM DD, YYYY')}
           </div>
           <div className={styles.chartsContainer}>
             <Chart title="expenses evolution" data={expensesEvolution} />
@@ -79,7 +81,12 @@ const Analytics = ({
         <DataTable columns={expensesColumns} entries={reverseArray(filteredExpenses)} />
       </div>
     </div>
-    <SelectDateRangeModal isModalOpen={isModalOpen} onCloseModal={onCloseModal} onDateRangeSelected={onDateRangeSelected} />
+    <SelectDateRangeModal
+      initialDateFrom={dateFrom}
+      initialDateTo={dateTo}
+      isModalOpen={isModalOpen}
+      onCloseModal={onCloseModal}
+      onDateRangeSelected={onDateRangeSelected} />
   </main>
 );
 
@@ -101,7 +108,9 @@ const mapStateToProps = state => {
     filteredExpenses,
     expensesEvolution: calcExpensesEvolution(expenses),
     expensesByCategory: calcExpensesByCategory(expenses),
-    isModalOpen: state.analytics.isModalOpen
+    isModalOpen: state.analytics.isModalOpen,
+    dateFrom: state.analytics.dateRange.from,
+    dateTo: state.analytics.dateRange.to
   };
 };
 
