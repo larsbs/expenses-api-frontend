@@ -27,13 +27,22 @@
   font-size: 14px;
   color: @dark-gray;
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc !important;
   border-radius: @border-radius-default;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset !important;
 }
 
 :local(.inputFieldWithSymbol) {
   width: 100%;
+  > div {
+    width: ~'calc(100% - 50px)';
+    display: inline-block;
+    border: 0;
+    input {
+      width: 100%;
+      border-radius: @border-radius-default 0 0 @border-radius-default;
+    }
+  }
   > input {
     width: ~'calc(100% - 50px)';
     border-radius: @border-radius-default 0 0 @border-radius-default;
@@ -43,7 +52,7 @@
 }
 
 :local(.inputFieldSymbol) {
-  width: 50px;
+  width: 50px !important;
   height: 40px;
   line-height: 40px;
   text-align: center;
@@ -52,8 +61,8 @@
   color: darken(@gray, 30%);
   font-size: 1.2em;
   background: @light-gray;
-  border: 1px solid #ccc;
-  border-left: 0;
+  border: 1px solid #ccc !important;
+  border-left: 0 !important;
   border-radius: 0 @border-radius-default @border-radius-default 0;
 }
 

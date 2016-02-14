@@ -1,6 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
+import 'react-datepicker/dist/react-datepicker.css';
 import formStyles from '../styles/forms.less';
 import modalStyles from '../styles/modal.less';
 
@@ -45,12 +48,9 @@ class SelectDateRangeModal extends React.Component {
               <div className={formStyles.formGroup}>
                 <label className={formStyles.formLabel}>From</label>
                 <div className={formStyles.inputFieldWithSymbol}>
-                  <input
-                    ref="amount"
-                    placeholder="Select starting date"
-                    className={this.state.amountErrorMsg ? formStyles.errorInputField : formStyles.inputField}
-                    type="text"
-                    onFocus={this._removeErrors.bind(this)} />
+                  <DatePicker
+                    className={formStyles.inputField}
+                    placeholderText="Click here to select a date" />
                   <div className={formStyles.inputFieldSymbol}>
                     <i className="fa fa-fw fa-calendar" />
                   </div>
@@ -60,12 +60,10 @@ class SelectDateRangeModal extends React.Component {
               <div className={formStyles.formGroup}>
                 <label className={formStyles.formLabel}>To</label>
                 <div className={formStyles.inputFieldWithSymbol}>
-                  <input
-                    ref="amount"
-                    placeholder="Select end date"
-                    className={this.state.amountErrorMsg ? formStyles.errorInputField : formStyles.inputField}
-                    type="text"
-                    onFocus={this._removeErrors.bind(this)} />
+                  <DatePicker
+                    className={formStyles.inputField}
+                    maxDate={moment()}
+                    placeholderText="Click here to select a date" />
                   <div className={formStyles.inputFieldSymbol}>
                     <i className="fa fa-fw fa-calendar" />
                   </div>

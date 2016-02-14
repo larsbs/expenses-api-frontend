@@ -64,7 +64,7 @@ const Analytics = ({
       <div className={styles.container}>
         <div className={styles.analytics}>
           <div className={styles.dateRange}>
-            <i className="fa fa-fw fa-calendar" /> Jan 2016 - Feb 2016
+            <i className="fa fa-fw fa-calendar" /> Jan 16, 2016 - Feb 14, 2016
           </div>
           <div className={styles.chartsContainer}>
             <Chart title="expenses evolution" data={expensesEvolution} />
@@ -116,7 +116,8 @@ const mapDispatchToProps = dispatch => {
     onCloseModal: () => {
       dispatch(closeSelectDateRangeModal());
     },
-    onDateRangeSelected: () => {
+    onDateRangeSelected: (from, to) => {
+      dispatch(changeDateRange(from, to));
     }
   };
 };
