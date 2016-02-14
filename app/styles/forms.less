@@ -8,6 +8,14 @@
 @import './colors';
 
 
+:global(.date-picker) {
+  width: 220px !important;
+  height: 250px !important;
+  position: absolute;
+  margin-top: 10px;
+  font-size: 11px !important;
+}
+
 :local(.formGroup) {
   margin-bottom: 15px;
 }
@@ -37,7 +45,8 @@
   > div {
     width: ~'calc(100% - 50px)';
     display: inline-block;
-    border: 0;
+    vertical-align: top;
+
     input {
       width: 100%;
       border-radius: @border-radius-default 0 0 @border-radius-default;
