@@ -21,12 +21,6 @@ module.exports = {
     host: 'localhost',
     port: '8080'
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      moment: 'moment',
-      'window.moment': 'moment'
-    })
-  ],
   module: {
     preLoaders: [{
       test: /\.jsx?$/,
@@ -52,9 +46,6 @@ module.exports = {
     }, {
       test: /\.less$/,
       loader: 'style!css!less'
-    }, {
-      test: /bootstrap\/js\//,
-      loader: 'imports?jQuery=jquery'
     }, {
       test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
       loader: "url?limit=10000&mimetype=application/font-woff"
