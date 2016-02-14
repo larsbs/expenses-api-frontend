@@ -1,14 +1,28 @@
+import moment from 'moment';
 import { capitalize } from './index';
 
 
-export function calcExpensesEvolution(expenses) {
-  // TODO: Control when two expenses happens in the same day
-  const expensesEvolution = expenses.map(expense => [expense.created_at.getTime(), expense.amount]);
+function getAmountsByDays(expenses) {
+  const amountsByDays = expenses.reduce((amountsByDays, expense) => {
+    const day = moment(expense.created_at).startOf('day').add(1, 'hour').toDate().getTime();
+    amountsByDays[day] = amountsByDays[day] || 0.0;
+    amountsByDays[day] += expense.amount;
+    return amountsByDays;
+  }, {});
+  return Object.keys(amountsByDays).map(day => {
+    return [Number(day), amountsByDays[day]];
+  });
+}
 
+
+export function calcExpensesEvolution(expenses) {
+  const amountsByDays = getAmountsByDays(expenses);
+  const expensesEvolution = amountsByDays;
+  console.log(expensesEvolution);
   let total = 0.0;
-  const totalAmount = expenses.map(expense => [
-    expense.created_at.getTime(),
-    Number((total += expense.amount).toFixed(2))
+  const totalAmount = amountsByDays.map(([day, amount]) => [
+    Number(day),
+    Number((total += amount).toFixed(2))
   ]);
 
   return {
