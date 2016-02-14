@@ -8,3 +8,15 @@ export function validateUsername(username) {
     username
   };
 }
+
+
+export function validateCategoryName(name) {
+  if ( ! name || name === '') {
+    return {
+      error: 'The name must not be empty'
+    };
+  }
+  return {
+    name
+  };
+}

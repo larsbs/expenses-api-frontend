@@ -1,4 +1,5 @@
 import * as CategoriesActions from '../actions/categories';
+import { reverseArray } from '../utils';
 
 
 const initialState = {
@@ -15,10 +16,30 @@ export default function categories(state = initialState, action) {
         });
       case CategoriesActions.RECEIVE_CATEGORIES:
         return Object.assign({}, state, {
-          entities: action.payload.categories
+          entities: reverseArray(action.payload.categories)
         });
       case CategoriesActions.ADD_CATEGORY:
-        return state;
+        return Object.assign({}, state, {
+          entities: [
+            action.payload.category,
+            ...state.entities
+          ]
+        });
+      case CategoriesActions.ADD_CATEGORY_SUCCESS:
+        return Object.assign({}, state, {
+          entities: state.entities.map(e => {
+            if (e.loading && e.id === action.payload.fakeId) {
+              return action.payload.category;
+            }
+            return e;
+          })
+        });
+      case CategoriesActions.ADD_CATEGORY_FAILED:
+        return Object.assign({}, state, {
+          entities: state.entities.filter(e => {
+            return ! e.loading && e.id !== action.payload.fakeId;
+          })
+        });
       case CategoriesActions.UPDATE_CATEGORY:
         return state;
       case CategoriesActions.DELETE_CATEGORY:

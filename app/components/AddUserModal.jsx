@@ -43,7 +43,7 @@ class AddUserModal extends React.Component {
             <i className={modalStyles.close + ' fa fa-fw fa-times'} onClick={onCloseModal} />
           </div>
           <div className={modalStyles.body}>
-            <form>
+            <form onSubmit={this._handleOnClickSubmit.bind(this)}>
               <div className={formStyles.formGroup}>
                 <label className={formStyles.formLabel}>Username</label>
                 <input
@@ -69,7 +69,8 @@ class AddUserModal extends React.Component {
     this.setState({ hasError: false });
   }
 
-  _handleOnClickSubmit() {
+  _handleOnClickSubmit(event) {
+    event.preventDefault();
     const { username, error } = validateUsername(this.refs.username.value);
     this.setState({ errorMsg: error || '', hasError: !!error });
 

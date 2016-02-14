@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { populateHasMany } from '../utils/populate';
-import { setCategoriesFilter, openAddCategoryModal, closeAddCategoryModal } from '../actions/categories';
+import {
+  setCategoriesFilter,
+  openAddCategoryModal,
+  closeAddCategoryModal,
+  addCategory
+} from '../actions/categories';
 import { capitalize } from '../utils';
 
 import Header from '../components/Header';
@@ -20,7 +25,7 @@ const breadcrumbs = [{
 }];
 
 const categoriesColumns = [
-  { attr: 'id', label: 'Id' },
+  { attr: 'id', label: 'Id', progress: true },
   { attr: 'name', label: 'Name', formatter: v => capitalize(v) },
   { attr: 'expenses.length', label: 'Expenses' },
 ];
@@ -36,7 +41,8 @@ const Categories = ({
   isModalOpen,
   onCloseModal,
   onClickAddCategory,
-  onChangeFilter
+  onChangeFilter,
+  onAddCategory
 }) => (
   <main>
     <Header breadcrumbs={breadcrumbs}>
@@ -48,7 +54,7 @@ const Categories = ({
       <DataFilter filters={categoriesFilters} onChange={onChangeFilter} />
       <DataTable columns={categoriesColumns} entries={filteredCategories} />
     </div>
-    <AddCategoryModal isModalOpen={isModalOpen} onCloseModal={onCloseModal} />
+    <AddCategoryModal isModalOpen={isModalOpen} onCloseModal={onCloseModal} onAddCategory={onAddCategory} />
   </main>
 );
 
@@ -76,6 +82,9 @@ const mapDispatchToProps = dispatch => {
     },
     onCloseModal: () => {
       dispatch(closeAddCategoryModal());
+    },
+    onAddCategory: name => {
+      dispatch(addCategory(name));
     }
   };
 };

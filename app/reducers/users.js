@@ -1,4 +1,5 @@
 import * as UsersActions from '../actions/users';
+import { reverseArray } from '../utils';
 
 
 const initialState = {
@@ -15,13 +16,13 @@ export default function users(state = initialState, action) {
         });
       case UsersActions.RECEIVE_USERS:
         return Object.assign({}, state, {
-          entities: action.payload.users
+          entities: reverseArray(action.payload.users)
         });
       case UsersActions.ADD_USER:
         return Object.assign({}, state, {
           entities: [
-            ...state.entities,
-            action.payload.user
+            action.payload.user,
+            ...state.entities
           ]
         });
       case UsersActions.ADD_USER_SUCCESS:

@@ -1,3 +1,6 @@
+import { createFakeId } from '../utils';
+
+
 export const SET_CATEGORIES_FILTER = 'SET_CATEGORIES_FILTER';
 
 export function setCategoriesFilter(filter) {
@@ -33,9 +36,42 @@ export function receiveCategories(categories) {
 
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 
-export function addCategory() {
+export function addCategory(name) {
   return {
-    type: ADD_CATEGORY
+    type: ADD_CATEGORY,
+    payload: {
+      category: {
+        id: createFakeId(),
+        name,
+        loading: true
+      }
+    }
+  };
+}
+
+
+export const ADD_CATEGORY_SUCCESS = 'ADD_CATEGORY_SUCCESS';
+
+export function addCategorySuccess(fakeId, category) {
+  return {
+    type: ADD_CATEGORY_SUCCESS,
+    payload: {
+      fakeId,
+      category
+    }
+  };
+}
+
+
+export const ADD_CATEGORY_FAILED = 'ADD_CATEGORY_FAILED';
+
+export function addCategoryFailed(err, fakeId) {
+  return {
+    type: ADD_CATEGORY_FAILED,
+    payload: {
+      fakeId,
+      err
+    }
   };
 }
 

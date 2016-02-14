@@ -68,3 +68,8 @@ export function fetchAll() {
 export function createUser({ username }) {
   return createEntity('user', { username });
 }
+
+
+export function createCategory({ name }) {
+  return createEntity('category', { name });
+}
