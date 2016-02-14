@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from '../components/Loader';
 import styles from '../styles/components/data-table.less';
 
 
@@ -10,6 +11,9 @@ function isValidPage(currentPage) {
 function ifNaNDefault(value, defaultValue) {
   return isNaN(value) ? defaultValue : value;
 }
+
+
+const nullFormatter = x => x;
 
 
 class DataTable extends React.Component {
@@ -57,17 +61,7 @@ class DataTable extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {shownEntries.map(entry => (
-              <tr key={entry.id}>
-                {columns.map((column, i) => (
-                  <td key={entry.id + '-' + i}>
-                    {column.formatter ? column.formatter(
-                      column.attr.split('.').reduce((o,i)=>o[i], entry)
-                     ) : column.attr.split('.').reduce((o,i)=>o[i], entry)}
-                  </td>
-                ))}
-              </tr>
-            ))}
+            {shownEntries.map(this._renderEntry.bind(this, columns))}
           </tbody>
         </table>
         <div className={styles.tablePagination}>
@@ -87,6 +81,36 @@ class DataTable extends React.Component {
     );
   }
 
+  _renderEntry(columns, entry) {
+    const renderEntryCell = this._renderEntryCell.bind(null, entry);
+    const isLoading = entry.loading;
+    return (
+      <tr key={entry.id} className={isLoading ? styles.loadingRow : null}>
+        {columns.map(renderEntryCell)}
+      </tr>
+    );
+  }
+
+  _renderEntryCell(entry, column, i) {
+    const entryAttr = column.attr.split('.').reduce((o, i) => o[i], entry);
+    const formatter = column.formatter || nullFormatter;
+    const isProgressColumn = column.progress;
+    const isLoading = entry.loading;
+
+    if (isLoading && isProgressColumn) {
+      return (
+        <td key={entry.id + '-' + i}>
+          <Loader />
+        </td>
+      );
+    }
+
+    return (
+      <td key={entry.id + '-' + i}>
+        {formatter(entryAttr)}
+      </td>
+    );
+  }
 
   _getShownEntries() {
     let { currentPage } = this.state;

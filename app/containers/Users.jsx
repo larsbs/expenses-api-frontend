@@ -24,7 +24,7 @@ const breadcrumbs = [{
 }];
 
 const usersColumns = [
-  { attr: 'id', label: 'Id' },
+  { attr: 'id', label: 'Id', progress: true },
   { attr: 'username', label: 'Username' },
   { attr: 'expenses.length', label: 'Expenses' },
 ];

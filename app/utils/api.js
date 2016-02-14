@@ -11,15 +11,6 @@ function fetchEntity(entity) {
     .then(json => json[entity]);
 }
 
-//function latencyFetchEntity(entity) {
-  //return new Promise((resolve, reject) => {
-    //setTimeout(() => {
-      //fetchEntity(entity)
-      //.then(resolve)
-      //.catch(reject);
-    //}, 4000);
-  //});
-//}
 
 function fetchExpenses() {
   return fetchEntity('expenses')
@@ -38,17 +29,37 @@ function fetchExpenses() {
   });
 }
 
+
 function fetchUsers() {
   return fetchEntity('users');
 }
 
+
 function fetchCategories() {
   return fetchEntity('categories');
 }
+
 
 export function fetchAll() {
   const e = fetchExpenses();
   const u = fetchUsers();
   const c = fetchCategories();
   return Promise.all([e, u, c]);
+}
+
+
+export function createUser({ username }) {
+  const request = new Request(BASE_URL + 'users' + 'asdf', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ username })
+  });
+  //return fetch(request)
+    //.then(response => response.json())
+    //.then(json => json[entity]);
+  return new Promise(resolve => {
+    setTimeout(resolve.bind(undefined, { user: null, err: true }), 5000);
+  });
 }

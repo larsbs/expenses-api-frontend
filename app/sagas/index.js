@@ -1,10 +1,24 @@
-import { fork, call, put } from 'redux-saga';
+import { fork, call, put, take } from 'redux-saga';
 
-import { fetchAll } from '../utils/fetch';
+import { fetchAll, createUser } from '../utils/api';
 import { receiveExpenses } from '../actions/expenses';
-import { receiveUsers } from '../actions/users';
+import { receiveUsers, ADD_USER, addUserSuccess, addUserFailed } from '../actions/users';
 import { receiveCategories } from '../actions/categories';
 import { showLoading, finishLoading } from '../actions/application';
+
+
+function* watchAddUser() {
+  while (true) {
+    const { payload } = yield take(ADD_USER);
+    const { user, err } = yield call(createUser, payload.user);
+    if (err) {
+      yield put(addUserFailed(err, payload.user));
+    }
+    else {
+      yield put(addUserSuccess(payload.user.fakeId, user));
+    }
+  }
+}
 
 
 function* loadApp() {
@@ -19,4 +33,5 @@ function* loadApp() {
 
 export default function* root(/* getState */) {
   yield fork(loadApp);
+  yield fork(watchAddUser);
 }

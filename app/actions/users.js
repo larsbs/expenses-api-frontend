@@ -1,3 +1,6 @@
+import { createFakeId } from '../utils';
+
+
 export const SET_USERS_FILTER = 'SET_USERS_FILTER';
 
 export function setUsersFilter(filter) {
@@ -38,7 +41,9 @@ export function addUser(username) {
     type: ADD_USER,
     payload: {
       user: {
-        username
+        id: createFakeId(),
+        username,
+        loading: true
       }
     }
   };
@@ -47,18 +52,26 @@ export function addUser(username) {
 
 export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS';
 
-export function addUserSuccess() {
+export function addUserSuccess(fakeId, user) {
   return {
-    type: ADD_USER_SUCCESS
+    type: ADD_USER_SUCCESS,
+    payload: {
+      fakeId,
+      user
+    }
   };
 }
 
 
 export const ADD_USER_FAILED = 'ADD_USER_FAILED';
 
-export function addUserFailed() {
+export function addUserFailed(err, fakeUser) {
   return {
-    type: ADD_USER_FAILED
+    type: ADD_USER_FAILED,
+    payload: {
+      err,
+      fakeUser
+    }
   };
 }
 
