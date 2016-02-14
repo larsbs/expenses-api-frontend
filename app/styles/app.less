@@ -1,6 +1,7 @@
 @import '~normalize.css/normalize.css';
 @import '~font-awesome/less/font-awesome.less';
 
+@import './colors';
 
 * {
   box-sizing: border-box;
@@ -18,4 +19,9 @@ html, body, #root {
 a {
   text-decoration: none;
   outline: 0 !important;
+  color: @blue;
+
+  &:hover {
+    color: darken(@blue, 15%);
+  }
 }
