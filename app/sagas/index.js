@@ -12,7 +12,6 @@ function* watchAddUser() {
     const { payload } = yield take(ADD_USER);
     try {
       const user = yield call(createUser, payload.user);
-      console.log(payload);
       yield put(addUserSuccess(payload.user.id, user));
     }
     catch (err) {

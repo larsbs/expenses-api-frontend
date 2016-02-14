@@ -25,14 +25,7 @@ export default function users(state = initialState, action) {
           ]
         });
       case UsersActions.ADD_USER_SUCCESS:
-        // TODO: Add alert
-        const newState = state.entities.map(e => {
-          if (e.loading && e.id === action.payload.fakeId) {
-            return action.payload.user;
-          }
-          return e;
-        });
-
+        // TODO: Add an alert
         return Object.assign({}, state, {
           entities: state.entities.map(e => {
             if (e.loading && e.id === action.payload.fakeId) {
@@ -42,8 +35,7 @@ export default function users(state = initialState, action) {
           })
         });
       case UsersActions.ADD_USER_FAILED:
-        console.log(action.payload.err);  // TODO: Replace by an alert
-        console.log('ADD_USER OPERATION FAILED');
+        // TODO: Add an alert
         return Object.assign({}, state, {
           entities: state.entities.filter(e => {
             return ! e.loading && e.id !== action.payload.fakeId;
