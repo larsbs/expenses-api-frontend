@@ -7,7 +7,6 @@ export function capitalize(str) {
 
 
 export function getExpensesInRange(expenses, from, to) {
-  console.log('FILTERING EXPENSES');
   return expenses.filter(e => {
     return moment(e.created_at) >= from && moment(e.created_at) <= to;
   });

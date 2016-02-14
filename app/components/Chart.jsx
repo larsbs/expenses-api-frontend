@@ -12,7 +12,6 @@ class Chart extends React.Component {
 
   componentDidUpdate() {
     for (const i in this._chart.series) {
-      console.log(this.props.data.series[i]);
       this._chart.series[i].setData(this.props.data.series[i].data, true);
     }
   }
