@@ -18,7 +18,6 @@ function getAmountsByDays(expenses) {
 export function calcExpensesEvolution(expenses) {
   const amountsByDays = getAmountsByDays(expenses);
   const expensesEvolution = amountsByDays;
-  console.log(expensesEvolution);
   let total = 0.0;
   const totalAmount = amountsByDays.map(([day, amount]) => [
     Number(day),
