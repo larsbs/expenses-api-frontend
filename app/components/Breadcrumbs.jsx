@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import styles from '../styles/components/breadcrumbs.less';
 
 
-const Crumb = ({ crumb }) => {
+export const Crumb = ({ crumb }) => {
 
   let crumbIcon = crumb.icon ? <i className={crumb.icon} /> : null;
 

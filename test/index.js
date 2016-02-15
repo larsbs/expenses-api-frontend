@@ -1,5 +1,9 @@
 import chai from 'chai';
 import spies from 'chai-spies';
+import jsxChai from 'jsx-chai';
+
+
+chai.use(jsxChai);
 chai.use(spies);
 
 
