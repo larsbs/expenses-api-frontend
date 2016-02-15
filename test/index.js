@@ -22,5 +22,8 @@ describe('UNIT TESTS', function () {
       require('./unit/utils/populate');
       require('./unit/utils/validate');
     });
+    describe('Sagas', function () {
+      require('./unit/sagas/index');
+    });
   });
 });

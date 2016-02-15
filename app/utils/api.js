@@ -61,7 +61,13 @@ export function fetchAll() {
   const e = fetchExpenses();
   const u = fetchUsers();
   const c = fetchCategories();
-  return Promise.all([e, u, c]);
+  return Promise.all([e, u, c]).then(([expenses, users, categories]) => {
+    return {
+      expenses,
+      users,
+      categories,
+    };
+  });
 }
 
 

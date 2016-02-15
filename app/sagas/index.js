@@ -7,7 +7,7 @@ import { receiveCategories, ADD_CATEGORY, addCategorySuccess, addCategoryFailed 
 import { showLoading, finishLoading } from '../actions/application';
 
 
-function* watchAddExpense() {
+export function* watchAddExpense() {
   while (true) {
     const { payload } = yield take(ADD_EXPENSE);
     try {
@@ -21,7 +21,7 @@ function* watchAddExpense() {
 }
 
 
-function* watchAddCategory() {
+export function* watchAddCategory() {
   while (true) {
     const { payload } = yield take(ADD_CATEGORY);
     try {
@@ -35,7 +35,7 @@ function* watchAddCategory() {
 }
 
 
-function* watchAddUser() {
+export function* watchAddUser() {
   while (true) {
     const { payload } = yield take(ADD_USER);
     try {
@@ -49,9 +49,9 @@ function* watchAddUser() {
 }
 
 
-function* loadApp() {
+export function* loadApp() {
   yield put(showLoading());
-  const [ expenses, users, categories ] = yield call(fetchAll);
+  const { users, expenses, categories } = yield call(fetchAll);
   yield put(receiveUsers(users));
   yield put(receiveExpenses(expenses));
   yield put(receiveCategories(categories));
