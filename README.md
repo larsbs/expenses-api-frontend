@@ -1,6 +1,6 @@
 # ExpensTrack
 
-ExpensTrac is a webapp to manage expenses. It represents my journey through react, redux and modern JavaScript tooling. It's a frontend for [expenses-api](https://github.com/larsbs/expenses-api/). Take it as a real-real-world example for [redux](https://github.com/reactjs/redux)
+ExpensTrack is a webapp to manage expenses. It represents my journey through react, redux and modern JavaScript tooling. It's a frontend for [expenses-api](https://github.com/larsbs/expenses-api/). Take it as a real-real-world example for [redux](https://github.com/reactjs/redux)
 
 ![front](screenshots/front.png)
 
