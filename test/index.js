@@ -1,3 +1,8 @@
+import chai from 'chai';
+import spies from 'chai-spies';
+chai.use(spies);
+
+
 describe('UNIT TESTS', function () {
   describe('ExpensTrack', function () {
     describe('Actions', function () {

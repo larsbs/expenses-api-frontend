@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import chai, { expect } from 'chai';
-import spies from 'chai-spies';
+import { expect } from 'chai';
 
 import Spinner from '../../../app/components/Spinner';
-
-
-chai.use(spies);
 
 
 describe('@Spinner', function () {
