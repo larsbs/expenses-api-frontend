@@ -16,7 +16,7 @@ $ npm install
 $ npm start
 ```
 
-The application will expect that you have [expenses-api](http://github.com/larsbs/expenses-api) running on [http://localhost:4000/](http://localhost:4000/).
+After webpack finishes it's work, open a browser and go to [http://localhost:3000/](http://localhost:3000/). The application will expect that you have [expenses-api](http://github.com/larsbs/expenses-api) running on [http://localhost:4000/](http://localhost:4000/).
 
 
 ## Technologies
