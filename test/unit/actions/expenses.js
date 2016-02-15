@@ -52,6 +52,7 @@ describe('@Expenses', function () {
         type: ExpensesActions.ADD_EXPENSE,
         payload: {
           expense: {
+            id: 'testing',
             note,
             amount,
             category_id: category,
@@ -60,8 +61,7 @@ describe('@Expenses', function () {
           }
         }
       };
-      const resultAction = ExpensesActions.addExpense(note, amount, category, user);
-      delete resultAction.payload.expense.id;  // NOTE: Impossible to test id, because is random generated
+      const resultAction = ExpensesActions.addExpense(note, amount, category, user, 'testing');
       expect(resultAction).to.deep.equal(expectedAction);
     });
   });

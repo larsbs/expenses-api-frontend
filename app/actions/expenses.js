@@ -36,12 +36,13 @@ export function receiveExpenses(expenses) {
 
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 
-export function addExpense(note, amount, category, user) {
+export function addExpense(note, amount, category, user, id) {
+  if (id && id !== 'testing') throw new Error('Id param must be used only for testing purposes');
   return {
     type: ADD_EXPENSE,
     payload: {
       expense: {
-        id: createFakeId(),
+        id: id ? id : createFakeId(),
         note,
         amount,
         category_id: category,
