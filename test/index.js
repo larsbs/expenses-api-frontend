@@ -7,5 +7,12 @@ describe('UNIT TESTS', function () {
       require('./unit/actions/expenses');
       require('./unit/actions/users');
     });
+    describe('Reducers', function () {
+      require('./unit/reducers/analytics');
+      require('./unit/reducers/application');
+      require('./unit/reducers/categories');
+      require('./unit/reducers/expenses');
+      require('./unit/reducers/users');
+    });
   });
 });
