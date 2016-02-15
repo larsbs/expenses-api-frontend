@@ -55,6 +55,6 @@ export default function users(state = initialState, action) {
           isModalOpen: false
         });
       default:
-        return state;
+        return Object.assign({}, state);
   }
 }

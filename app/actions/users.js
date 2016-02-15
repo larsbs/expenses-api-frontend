@@ -36,12 +36,13 @@ export function receiveUsers(users) {
 
 export const ADD_USER = 'ADD_USER';
 
-export function addUser(username) {
+export function addUser(username, id) {
+  if (id && id !== 'testing') throw new Error('Id param must be used only for testing purposes');
   return {
     type: ADD_USER,
     payload: {
       user: {
-        id: createFakeId(),
+        id: id ? id : createFakeId(),
         username,
         loading: true
       }

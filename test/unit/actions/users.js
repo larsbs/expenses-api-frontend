@@ -37,13 +37,13 @@ describe('@Users', function () {
         type: UsersActions.ADD_USER,
         payload: {
           user: {
+            id: 'testing',
             username,
             loading: true
           }
         }
       };
-      const resultAction = UsersActions.addUser(username);
-      delete resultAction.payload.user.id;  // NOTE: Impossible to test id, because is random generated
+      const resultAction = UsersActions.addUser(username, 'testing');
       expect(resultAction).to.deep.equal(expectedAction);
     });
   });
