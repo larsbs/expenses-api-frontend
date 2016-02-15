@@ -4,8 +4,7 @@ import moment from 'moment';
 import {
   capitalize,
   getExpensesInRange,
-  reverseArray,
-  createFakeId
+  reverseArray
 } from '../../../app/utils';
 
 
