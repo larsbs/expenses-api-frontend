@@ -79,24 +79,6 @@ export function addExpenseFailed(err, fakeId) {
 }
 
 
-export const UPDATE_EXPENSE = 'UPDATE_EXPENSE';
-
-export function updateExpense() {
-  return {
-    type: UPDATE_EXPENSE
-  };
-}
-
-
-export const DELETE_EXPENSE = 'DELETE_EXPENSE';
-
-export function deleteExpense() {
-  return {
-    type: DELETE_EXPENSE
-  };
-}
-
-
 export const OPEN_ADD_EXPENSE_MODAL = 'OPEN_ADD_EXPENSE_MODAL';
 
 export function openAddExpenseModal() {
