@@ -52,7 +52,6 @@ export function* watchAddUser() {
 export function* loadApp() {
   yield put(showLoading());
   const { users, expenses, categories } = yield call(fetchAll);
-  console.log(users);
   yield put(receiveUsers(users));
   yield put(receiveExpenses(expenses));
   yield put(receiveCategories(categories));
