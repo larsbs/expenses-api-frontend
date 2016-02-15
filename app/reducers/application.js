@@ -16,6 +16,6 @@ export default function application(state = initialState, action) {
           isLoading: false
         });
       default:
-        return state;
+        return Object.assign({}, state);
   }
 }

@@ -37,13 +37,13 @@ describe('@Categories', function () {
         type: CategoriesActions.ADD_CATEGORY,
         payload: {
           category: {
+            id: 'testing',
             name,
             loading: true
           }
         }
       };
-      const resultAction = CategoriesActions.addCategory(name);
-      delete resultAction.payload.category.id;  // NOTE: Impossible to test id, because is random generated
+      const resultAction = CategoriesActions.addCategory(name, 'testing');
       expect(resultAction).to.deep.equal(expectedAction);
     });
   });

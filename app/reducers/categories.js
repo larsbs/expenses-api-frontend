@@ -40,10 +40,6 @@ export default function categories(state = initialState, action) {
             return ! e.loading && e.id !== action.payload.fakeId;
           })
         });
-      case CategoriesActions.UPDATE_CATEGORY:
-        return state;
-      case CategoriesActions.DELETE_CATEGORY:
-        return state;
       case CategoriesActions.OPEN_ADD_CATEGORY_MODAL:
         return Object.assign({}, state, {
           isModalOpen: true
@@ -53,6 +49,6 @@ export default function categories(state = initialState, action) {
           isModalOpen: false
         });
       default:
-        return state;
+        return Object.assign({}, state);
   }
 }

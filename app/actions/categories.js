@@ -27,12 +27,13 @@ export function receiveCategories(categories) {
 
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 
-export function addCategory(name) {
+export function addCategory(name, id) {
+  if (id && id !== 'testing') throw new Error('Id param must be used only for testing purposes');
   return {
     type: ADD_CATEGORY,
     payload: {
       category: {
-        id: createFakeId(),
+        id: id ? id : createFakeId(),
         name,
         loading: true
       }
