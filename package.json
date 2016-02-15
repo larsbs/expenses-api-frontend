@@ -42,6 +42,7 @@
     "normalize.css": "^3.0.3",
     "pluralize": "^1.2.1",
     "proxy-middleware": "^0.15.0",
+    "react-addons-test-utils": "^0.14.7",
     "remote-redux-devtools": "^0.1.2",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",

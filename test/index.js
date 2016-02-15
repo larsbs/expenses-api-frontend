@@ -25,5 +25,20 @@ describe('UNIT TESTS', function () {
     describe('Sagas', function () {
       require('./unit/sagas/index');
     });
+    describe('Components', function () {
+      require('./unit/components/AddCategoryModal');
+      require('./unit/components/AddExpenseModal');
+      require('./unit/components/AddUserModal');
+      require('./unit/components/Breadcrumbs');
+      require('./unit/components/Chart');
+      require('./unit/components/DataFilter');
+      require('./unit/components/DataTable');
+      require('./unit/components/Header');
+      require('./unit/components/LatestActivity');
+      require('./unit/components/Loader');
+      require('./unit/components/SelectDateRangeModal');
+      require('./unit/components/Sidebar');
+      require('./unit/components/Spinner');
+    });
   });
 });
