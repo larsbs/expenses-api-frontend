@@ -13,15 +13,6 @@ export function setCategoriesFilter(filter) {
 }
 
 
-export const LOAD_CATEGORIES = 'LOAD_CATEGORIES';
-
-export function loadCategories() {
-  return {
-    type: LOAD_CATEGORIES
-  };
-}
-
-
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 
 export function receiveCategories(categories) {
@@ -72,24 +63,6 @@ export function addCategoryFailed(err, fakeId) {
       fakeId,
       err
     }
-  };
-}
-
-
-export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
-
-export function updateCategory() {
-  return {
-    type: UPDATE_CATEGORY
-  };
-}
-
-
-export const DELETE_CATEGORY = 'DELETE_CATEGORY';
-
-export function deleteCategory() {
-  return {
-    type: DELETE_CATEGORY
   };
 }
 
