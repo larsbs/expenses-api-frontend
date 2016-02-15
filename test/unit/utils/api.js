@@ -17,17 +17,17 @@ describe('@Api', function () {
         done();
       });
     });
-    it('should return the expenses in the first index of the result array', function () {
-      expect(fetchResult[0]).to.exists;
-      expect(fetchResult[0][0].note).to.exists;
+    it('should return the expenses', function () {
+      expect(fetchResult.expenses).to.exists;
+      expect(fetchResult.expenses[0].note).to.exists;
     });
-    it('should return the users in the second index of the result array', function () {
-      expect(fetchResult[1]).to.exists;
-      expect(fetchResult[1][0].username).to.exists;
+    it('should return the users', function () {
+      expect(fetchResult.users).to.exists;
+      expect(fetchResult.users[0].username).to.exists;
     });
-    it('should return the categories in the third index of the result array', function () {
-      expect(fetchResult[2]).to.exists;
-      expect(fetchResult[2][0].name).to.exists;
+    it('should return the categories', function () {
+      expect(fetchResult.categories).to.exists;
+      expect(fetchResult.categories[0].name).to.exists;
     });
   });
   describe('#createUser(user)', function () {
