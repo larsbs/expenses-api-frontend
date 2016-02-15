@@ -52,6 +52,6 @@ export default function expenses(state = initialState, action) {
           isModalOpen: false
         });
       default:
-        return Object.assing({}, state);
+        return Object.assign({}, state);
   }
 }

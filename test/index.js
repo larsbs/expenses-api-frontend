@@ -13,6 +13,7 @@ describe('UNIT TESTS', function () {
       require('./unit/reducers/categories');
       require('./unit/reducers/expenses');
       require('./unit/reducers/users');
+      require('./unit/reducers/index');
     });
   });
 });
