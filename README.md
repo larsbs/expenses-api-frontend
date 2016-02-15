@@ -16,6 +16,22 @@ $ npm install
 $ npm start
 ```
 
+The application will expect that you have [expenses-api](http://github.com/larsbs/expenses-api) running on [http://localhost:4000/](http://localhost:4000/).
+
+
+## Technologies
+
+The technologies used so far are:
+
+ * React
+ * Redux
+ * Redux-Sagas
+ * Webpack
+ * React-Redux-Router
+ * Babel
+
+And many more...
+
 
 ## Tests
 
