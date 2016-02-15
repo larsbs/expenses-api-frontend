@@ -15,5 +15,12 @@ describe('UNIT TESTS', function () {
       require('./unit/reducers/users');
       require('./unit/reducers/index');
     });
+    describe('Utils', function () {
+      require('./unit/utils/api');
+      require('./unit/utils/charts');
+      require('./unit/utils/index');
+      require('./unit/utils/populate');
+      require('./unit/utils/validate');
+    });
   });
 });
